@@ -3,9 +3,10 @@
 <section class="hero" data-hero data-autoplay="{{ section.settings.autoplay }}" data-delay="{{ section.settings.delay | times: 1000 }}" aria-roledescription="carousel" aria-label="Promotions">
   {%- if slides.size > 1 -%}<span class="hero__count" data-hero-count>{{ slides.size }} slides</span>{%- endif -%}
   {%- for block in slides limit: 3 -%}
+    {%- if forloop.first -%}{%- assign hero_loading = 'eager' -%}{%- else -%}{%- assign hero_loading = 'lazy' -%}{%- endif -%}
     <div class="hero__slide {% if block.settings.text_theme == 'light' %}hero--light{% endif %}" data-hero-slide style="opacity:{% if forloop.first %}1{% else %}0{% endif %}" aria-hidden="{% unless forloop.first %}true{% endunless %}" {{ block.shopify_attributes }}>
       {%- if block.settings.image != blank -%}
-        <div class="hero__bg">{{ block.settings.image | image_url: width: 2000 | image_tag: loading: forloop.first | default: 'eager', sizes: '100vw', widths: '600,1000,1400,2000' }}</div>
+        <div class="hero__bg">{{ block.settings.image | image_url: width: 2000 | image_tag: loading: hero_loading, sizes: '100vw', widths: '600,1000,1400,2000' }}</div>
       {%- else -%}
         <div class="hero__bg" style="background:linear-gradient(120deg,var(--gunmetal-800),var(--gunmetal-600))"></div>
       {%- endif -%}

@@ -7,7 +7,6 @@
     <div class="card" style="padding:28px">
       <div style="font-size:clamp(2rem,6vw,3rem);font-weight:700;color:var(--accent)">{{ gift_card.balance | money }}</div>
       {%- if gift_card.expired -%}<p style="color:var(--danger);margin-top:8px">This gift card has expired.</p>{%- endif -%}
-      {%- if gift_card.qr_identifier -%}<img src="{{ gift_card.qr_identifier | generate_qr_code }}" alt="Gift card QR code" style="margin:18px auto;width:160px;height:160px">{%- endif -%}
       <div class="input-group" style="margin-top:12px">
         <input class="input" type="text" value="{{ gift_card.code | format_code }}" readonly aria-label="Gift card code" style="text-align:center;letter-spacing:.1em">
       </div>
