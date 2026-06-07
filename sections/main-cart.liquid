@@ -1,0 +1,39 @@
+{%- comment -%} Full cart page (used when cart type = page; also accessible at /cart). {%- endcomment -%}
+<section class="section">
+  <div class="page-width" style="max-width:1000px">
+    <h1 style="margin-bottom:24px">{{ 'cart.general.title' | t }}</h1>
+    {%- if cart.item_count > 0 -%}
+      <form action="{{ routes.cart_url }}" method="post">
+        {%- for item in cart.items -%}
+          <div class="cart-line" data-line="{{ item.key }}" style="grid-template-columns:90px 1fr auto;padding:18px 0">
+            <img class="cart-line__media" style="width:90px;height:90px" src="{{ item.image | image_url: width: 180 }}" alt="{{ item.title | escape }}" width="90" height="90" loading="lazy">
+            <div>
+              <a href="{{ item.url }}" class="cart-line__title" style="font-size:1rem">{{ item.product.title }}</a>
+              {%- unless item.variant.title contains 'Default' -%}<div class="cart-line__variant">{{ item.variant.title }}</div>{%- endunless -%}
+              <div style="margin-top:10px;display:flex;align-items:center;gap:14px">
+                <div class="qty"><button type="button" data-qty-change="-1" aria-label="Decrease">{% render 'icon', name: 'minus', size: 14 %}</button><input value="{{ item.quantity }}" readonly aria-label="Quantity"><button type="button" data-qty-change="1" aria-label="Increase">{% render 'icon', name: 'plus', size: 14 %}</button></div>
+                <button type="button" data-line-remove class="btn--ghost" style="color:var(--text-muted);font-size:.85rem">{{ 'cart.general.remove' | t }}</button>
+              </div>
+            </div>
+            <div style="text-align:right"><div style="font-weight:650">{{ item.final_line_price | money }}</div>{%- if item.original_line_price > item.final_line_price -%}<s class="text-faint" style="font-size:.85rem">{{ item.original_line_price | money }}</s>{%- endif -%}</div>
+          </div>
+        {%- endfor -%}
+
+        <div style="display:flex;justify-content:flex-end;margin-top:28px">
+          <div style="width:min(380px,100%)">
+            <div class="cart-trust" style="justify-content:flex-end">{{ settings.cart_reassurance }}</div>
+            <div style="display:flex;justify-content:space-between;font-size:1.1rem;margin-bottom:6px"><span style="font-weight:650">{{ 'cart.general.subtotal' | t }}</span><span style="font-weight:700">{{ cart.total_price | money }}</span></div>
+            <p class="text-muted" style="font-size:.8rem;margin-bottom:14px">{{ 'cart.general.taxes_note' | t }}</p>
+            <button type="submit" name="checkout" class="btn btn--accent btn--lg btn--block">{{ 'cart.general.checkout' | t }}</button>
+            <a href="{{ routes.all_products_collection_url }}" class="btn btn--ghost btn--block" style="margin-top:8px">{{ 'cart.general.continue' | t }}</a>
+          </div>
+        </div>
+      </form>
+    {%- else -%}
+      <div class="empty-state">{% render 'icon', name: 'cart', size: 44 %}<h2 style="margin:14px 0 8px">{{ 'cart.general.empty' | t }}</h2><a href="{{ routes.all_products_collection_url }}" class="btn btn--accent" style="margin-top:8px">Shop now</a></div>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{ "name": "Cart", "settings": [] }
+{% endschema %}

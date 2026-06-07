@@ -1,0 +1,29 @@
+{%- comment -%} Email signup. No popup. Professional copy. {%- endcomment -%}
+<section class="section">
+  <div class="page-width">
+    <div class="newsletter reveal">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h2>{{ section.settings.heading | default: 'Get buying guides, restock alerts, and exclusive tech offers.' }}</h2>
+      <p class="text-muted" style="max-width:52ch;margin:10px auto 0">{{ section.settings.text | default: 'Useful, occasional emails — no spam. Unsubscribe anytime.' }}</p>
+      {%- form 'customer', class: 'newsletter__form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <input class="input" type="email" name="contact[email]" placeholder="{{ 'general.newsletter.placeholder' | t }}" aria-label="{{ 'general.newsletter.label' | t }}" required>
+        <button type="submit" class="btn btn--accent">{{ 'general.newsletter.submit' | t }}</button>
+        {%- if form.posted_successfully? -%}<p class="verified" style="flex-basis:100%;justify-content:center;margin-top:8px">{% render 'icon', name: 'check', size: 14 %} {{ 'general.newsletter.success' | t }}</p>{%- endif -%}
+        {%- if form.errors -%}<p style="color:var(--danger);flex-basis:100%;margin-top:8px">{{ form.errors.translated_fields.email }} {{ form.errors.messages.email }}</p>{%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Stay informed" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Get buying guides, restock alerts, and exclusive tech offers." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Useful, occasional emails — no spam. Unsubscribe anytime." }
+  ],
+  "presets": [ { "name": "Newsletter" } ]
+}
+{% endschema %}

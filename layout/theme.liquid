@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    {%- comment -%} No-flash theme + accent injection {%- endcomment -%}
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("nw-theme");
+          if (t) document.documentElement.setAttribute("data-theme", t);
+          else if (window.matchMedia("(prefers-color-scheme: dark)").matches && {{ settings.respect_os_theme | default: false | json }})
+            document.documentElement.setAttribute("data-theme", "dark");
+        } catch (e) {}
+      })();
+    </script>
+
+    <title>{{ page_title }}{% if current_tags %} &ndash; {{ current_tags | join: ', ' }}{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}</title>
+    {%- if page_description -%}<meta name="description" content="{{ page_description | escape }}">{%- endif -%}
+
+    {{ content_for_header }}
+
+    {%- comment -%} Fonts: load a clean modern sans. Self-hostable later. {%- endcomment -%}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;550;600;650;700&display=swap" rel="stylesheet">
+
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'components.css' | asset_url | stylesheet_tag }}
+
+    <style>
+      {%- if settings.heading_font -%}{{ settings.heading_font | font_face: font_display: 'swap' }}{%- endif -%}
+      {%- if settings.body_font -%}{{ settings.body_font | font_face: font_display: 'swap' }}{%- endif -%}
+      :root {
+        --accent: {{ settings.accent_color | default: '#3a6ea5' }};
+        --accent-hover: {{ settings.accent_color_hover | default: '#2f5a87' }};
+        {% if settings.heading_font %}--font-head: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};{% endif %}
+        {% if settings.body_font %}--font-body: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }};{% endif %}
+      }
+    </style>
+
+    <script>window.Shopify = window.Shopify || {}; window.Shopify.moneyFormat = {{ shop.money_format | json }};</script>
+  </head>
+
+  <body
+    data-template="{{ template.name }}"
+    {% if template.name == 'product' %}data-product-handle="{{ product.handle }}"{% endif %}
+    class="template-{{ template.name }}">
+
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    {% sections 'header-group' %}
+
+    <main id="main-content" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {% sections 'footer-group' %}
+
+    {%- comment -%} ---- GLOBAL OVERLAYS (mounted once) ---- {%- endcomment -%}
+    {% section 'cart-drawer' %}
+    {% render 'mobile-menu' %}
+    {% render 'quick-view-modal' %}
+    {% render 'mobile-bottom-nav' %}
+
+    <div class="toast" data-toast role="status" aria-live="polite">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+      <span data-toast-msg></span>
+    </div>
+
+    {{ 'global.js' | asset_url | script_tag }}
+  </body>
+</html>

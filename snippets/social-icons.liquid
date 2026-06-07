@@ -1,0 +1,12 @@
+{%- comment -%} Footer social links — only render what's configured. {%- endcomment -%}
+{%- assign has_social = false -%}
+{%- if settings.social_instagram != blank or settings.social_facebook != blank or settings.social_x != blank or settings.social_youtube != blank or settings.social_tiktok != blank -%}{%- assign has_social = true -%}{%- endif -%}
+{%- if has_social -%}
+<div class="footer__social">
+  {%- if settings.social_instagram != blank -%}<a href="{{ settings.social_instagram }}" aria-label="Instagram" rel="nofollow noopener" target="_blank">{% render 'icon', name: 'instagram', size: 18 %}</a>{%- endif -%}
+  {%- if settings.social_facebook != blank -%}<a href="{{ settings.social_facebook }}" aria-label="Facebook" rel="nofollow noopener" target="_blank">{% render 'icon', name: 'facebook', size: 18 %}</a>{%- endif -%}
+  {%- if settings.social_x != blank -%}<a href="{{ settings.social_x }}" aria-label="X" rel="nofollow noopener" target="_blank">{% render 'icon', name: 'x', size: 18 %}</a>{%- endif -%}
+  {%- if settings.social_youtube != blank -%}<a href="{{ settings.social_youtube }}" aria-label="YouTube" rel="nofollow noopener" target="_blank">{% render 'icon', name: 'youtube', size: 18 %}</a>{%- endif -%}
+  {%- if settings.social_tiktok != blank -%}<a href="{{ settings.social_tiktok }}" aria-label="TikTok" rel="nofollow noopener" target="_blank">{% render 'icon', name: 'tiktok', size: 18 %}</a>{%- endif -%}
+</div>
+{%- endif -%}

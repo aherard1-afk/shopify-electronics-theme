@@ -1,0 +1,22 @@
+<section class="section"><div class="page-width" style="max-width:440px">
+  <h1 style="text-align:center;margin-bottom:24px">Sign in</h1>
+  <div class="card" style="padding:28px">
+    {%- form 'customer_login' -%}
+      {%- if form.errors -%}<p style="color:var(--danger);margin-bottom:12px">{{ form.errors | default_errors }}</p>{%- endif -%}
+      <div class="field" style="margin-bottom:14px"><label for="ce">Email</label><input class="input" id="ce" type="email" name="customer[email]" required></div>
+      {%- if form.password_needed -%}
+        <div class="field"><label for="cp">Password</label><input class="input" id="cp" type="password" name="customer[password]" required></div>
+        <p style="margin-top:8px"><a href="#recover" style="color:var(--accent);font-size:.85rem" onclick="document.getElementById('recover').hidden=false;return false;">Forgot password?</a></p>
+      {%- endif -%}
+      <button type="submit" class="btn btn--accent btn--block" style="margin-top:16px">Sign in</button>
+    {%- endform -%}
+    <div id="recover" hidden style="margin-top:18px;border-top:1px solid var(--border);padding-top:18px">
+      {%- form 'recover_customer_password' -%}
+        <p class="text-muted" style="font-size:.85rem;margin-bottom:10px">Enter your email to reset your password.</p>
+        <div class="input-group"><input class="input" type="email" name="email" placeholder="you@email.com" aria-label="Email"><button class="btn btn--outline">Reset</button></div>
+        {%- if form.posted_successfully? -%}<p class="verified" style="margin-top:8px">Reset email sent.</p>{%- endif -%}
+      {%- endform -%}
+    </div>
+    <p style="text-align:center;margin-top:18px;font-size:.9rem">New here? <a href="{{ routes.account_register_url }}" style="color:var(--accent)">Create an account</a></p>
+  </div>
+</div></section>

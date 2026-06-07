@@ -1,0 +1,7 @@
+{%- comment -%} Quick view modal shell. Content fetched via the quick-view section. {%- endcomment -%}
+<div class="modal-backdrop" id="quick-view" data-backdrop aria-hidden="true" role="dialog" aria-modal="true" aria-label="Product quick view">
+  <div class="modal" style="position:relative">
+    <button type="button" class="drawer__close" data-close-layer data-autofocus aria-label="{{ 'general.accessibility.close' | t }}" style="position:absolute;top:14px;right:14px;z-index:2">{% render 'icon', name: 'close', size: 20 %}</button>
+    <div data-quick-view-content></div>
+  </div>
+</div>

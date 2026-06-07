@@ -1,0 +1,34 @@
+<section class="section"><div class="page-width" style="max-width:900px">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:24px">
+    <h1>My account</h1>
+    <a href="{{ routes.account_logout_url }}" class="btn btn--outline btn--sm">Sign out</a>
+  </div>
+  <div class="split" style="align-items:start;gap:32px">
+    <div>
+      <h3 style="margin-bottom:14px">Order history</h3>
+      {%- paginate customer.orders by 12 -%}
+        {%- if customer.orders.size > 0 -%}
+          <div class="card">
+            {%- for order in customer.orders -%}
+              <a href="{{ order.customer_url }}" style="display:flex;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border)">
+                <div><strong>{{ order.name }}</strong><div class="text-muted" style="font-size:.85rem">{{ order.created_at | date: '%b %d, %Y' }} · {{ order.financial_status }}</div></div>
+                <div style="text-align:right"><div style="font-weight:650">{{ order.total_net_amount | money }}</div><div class="text-muted" style="font-size:.85rem">{{ order.fulfillment_status }}</div></div>
+              </a>
+            {%- endfor -%}
+          </div>
+        {%- else -%}
+          <p class="text-muted">You haven't placed any orders yet.</p>
+        {%- endif -%}
+      {%- endpaginate -%}
+    </div>
+    <div class="split__media" style="order:0">
+      <div class="card" style="padding:24px">
+        <h3 style="margin-bottom:12px">Account details</h3>
+        <p style="font-weight:600">{{ customer.name }}</p>
+        <p class="text-muted" style="font-size:.9rem">{{ customer.email }}</p>
+        {%- if customer.default_address -%}<hr><p class="text-muted" style="font-size:.9rem">{{ customer.default_address | format_address }}</p>{%- endif -%}
+        <a href="{{ routes.account_addresses_url }}" class="btn btn--outline btn--sm btn--block" style="margin-top:14px">Manage addresses</a>
+      </div>
+    </div>
+  </div>
+</div></section>

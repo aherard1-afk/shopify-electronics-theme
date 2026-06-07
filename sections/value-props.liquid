@@ -1,0 +1,44 @@
+{%- comment -%} Confidence-building value section: quality, compatibility, support, warranty. {%- endcomment -%}
+<section class="section section--tight">
+  <div class="page-width">
+    <div class="section-head"><div class="section-head__titles">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h2>{{ section.settings.heading | default: 'Why shop with us' }}</h2>
+    </div></div>
+    <div class="value-grid">
+      {%- for block in section.blocks -%}
+        <div class="value-card reveal" {{ block.shopify_attributes }}>
+          {% render 'icon', name: block.settings.icon, size: 28 %}
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {%- else -%}
+        <div class="value-card">{% render 'icon', name: 'check', size: 28 %}<h3>Vetted quality</h3><p>We stock dependable products and stand behind what we sell.</p></div>
+        <div class="value-card">{% render 'icon', name: 'shield', size: 28 %}<h3>Warranty backed</h3><p>Clear warranty support so you're covered after purchase.</p></div>
+        <div class="value-card">{% render 'icon', name: 'headset', size: 28 %}<h3>Expert support</h3><p>Talk to people who know the products and can help you choose.</p></div>
+        <div class="value-card">{% render 'icon', name: 'package', size: 28 %}<h3>Easy setup</h3><p>Compatibility guidance and clear specs so it works out of the box.</p></div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Value props",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Confidence built in" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Why shop with us" }
+  ],
+  "blocks": [
+    { "type": "prop", "name": "Value", "settings": [
+      { "type": "select", "id": "icon", "label": "Icon", "default": "check", "options": [
+        { "value": "check", "label": "Check" }, { "value": "shield", "label": "Shield" }, { "value": "headset", "label": "Support" },
+        { "value": "package", "label": "Package" }, { "value": "truck", "label": "Truck" }, { "value": "lock", "label": "Lock" }, { "value": "rotate", "label": "Returns" } ] },
+      { "type": "text", "id": "title", "label": "Title", "default": "Vetted quality" },
+      { "type": "textarea", "id": "text", "label": "Text", "default": "We stock dependable products and stand behind what we sell." }
+    ] }
+  ],
+  "presets": [ { "name": "Value props", "blocks": [ { "type": "prop" }, { "type": "prop", "settings": { "icon": "shield", "title": "Warranty backed", "text": "Clear warranty support so you're covered after purchase." } }, { "type": "prop", "settings": { "icon": "headset", "title": "Expert support", "text": "Talk to people who know the products." } }, { "type": "prop", "settings": { "icon": "package", "title": "Easy setup", "text": "Compatibility guidance and clear specs." } } ] } ]
+}
+{% endschema %}

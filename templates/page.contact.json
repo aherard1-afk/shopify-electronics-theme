@@ -1,0 +1,6 @@
+{
+  "sections": {
+    "main": { "type": "contact-form", "settings": { "eyebrow": "Contact", "heading": "Get in touch", "intro": "Questions about a product, an order, or compatibility? Our team is here to help.", "address": "" } }
+  },
+  "order": ["main"]
+}

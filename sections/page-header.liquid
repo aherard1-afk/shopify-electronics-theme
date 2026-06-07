@@ -1,0 +1,20 @@
+{%- comment -%} Header band for content pages: eyebrow + title + intro. {%- endcomment -%}
+<section class="collection-banner">
+  <div class="page-width collection-banner__inner" style="text-align:{{ section.settings.align }}">
+    {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+    <h1>{{ section.settings.heading | default: page.title }}</h1>
+    {%- if section.settings.intro != blank -%}<p class="section-sub" style="margin-inline:{% if section.settings.align == 'center' %}auto{% endif %}">{{ section.settings.intro }}</p>{%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Page header",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "textarea", "id": "intro", "label": "Intro" },
+    { "type": "select", "id": "align", "label": "Alignment", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" } ], "default": "left" }
+  ],
+  "presets": [ { "name": "Page header" } ]
+}
+{% endschema %}

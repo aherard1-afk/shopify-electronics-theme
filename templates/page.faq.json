@@ -1,0 +1,17 @@
+{
+  "sections": {
+    "header": { "type": "page-header", "settings": { "eyebrow": "Answers", "heading": "Frequently Asked Questions", "intro": "Everything you need to know about shopping, shipping, and support.", "align": "center" } },
+    "shipping_faq": { "type": "faq", "settings": { "heading": "Shipping & delivery", "show_link": false }, "blocks": {
+      "q1": { "type": "qa", "settings": { "question": "How long does shipping take?", "answer": "Delivery times depend on your location and the product. Estimated times and methods are shown at checkout, and you'll get tracking once your order ships. See our Shipping Policy for full details." } },
+      "q2": { "type": "qa", "settings": { "question": "How do I track my order?", "answer": "You'll receive a tracking link by email when your order ships. You can also view order status from your account." } },
+      "q3": { "type": "qa", "settings": { "question": "Do you ship internationally?", "answer": "Please see our Shipping Policy for current international shipping availability. Import duties and taxes may apply depending on your country." } }
+    }, "block_order": ["q1","q2","q3"] },
+    "orders_faq": { "type": "faq", "settings": { "heading": "Products, returns & warranty", "show_link": false }, "blocks": {
+      "q4": { "type": "qa", "settings": { "question": "Do products include warranty?", "answer": "Most products include a manufacturer or store warranty. Coverage varies by product — see the Warranty & Product Support page for details." } },
+      "q5": { "type": "qa", "settings": { "question": "Can I return an item?", "answer": "Yes. See our Returns & Refunds page for the return window, condition requirements, and steps to start a return." } },
+      "q6": { "type": "qa", "settings": { "question": "Do you sell digital and physical products?", "answer": "Yes — we carry both physical electronics and digital products. Digital items may have different return terms; check the product page." } },
+      "q7": { "type": "qa", "settings": { "question": "How can I contact support?", "answer": "Reach our team through the Contact page or by email. Support hours are listed there, and we aim to respond promptly." } }
+    }, "block_order": ["q4","q5","q6","q7"] }
+  },
+  "order": ["header", "shipping_faq", "orders_faq"]
+}

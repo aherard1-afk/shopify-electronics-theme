@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "header": { "type": "page-header", "settings": { "eyebrow": "Our story", "heading": "About us", "intro": "A trusted electronics store built on honest advice and dependable products.", "align": "center" } },
+    "intro": { "type": "rich-text", "settings": { "content": "<p>We started with a simple idea: buying electronics should feel reassuring, not overwhelming. So we built a store around the products people actually rely on — phones, laptops, audio, smart home, wearables, monitors, and the accessories that tie it all together — and paired them with people who genuinely know the gear.</p><p><strong>[Add your real founding story, location, and milestones here.]</strong> Over the years we've focused on the same things that matter today: clear information, fair prices, and support that's there when you need it.</p>", "width": 760 } },
+    "values": { "type": "feature-columns", "settings": { "eyebrow": "What we stand for", "heading": "How we do business", "columns": 3, "center": true }, "blocks": {
+      "f1": { "type": "feature", "settings": { "icon": "check", "title": "Honest advice", "text": "<p>We recommend what fits your needs — not just the priciest option.</p>" } },
+      "f2": { "type": "feature", "settings": { "icon": "shield", "title": "Products we trust", "text": "<p>We stock dependable tech and stand behind what we sell.</p>" } },
+      "f3": { "type": "feature", "settings": { "icon": "headset", "title": "Support that shows up", "text": "<p>Reach real specialists before and after your purchase.</p>" } }
+    }, "block_order": ["f1","f2","f3"] },
+    "cta": { "type": "rich-text", "settings": { "heading": "Ready to shop?", "content": "<p>Explore our full range or talk to our team about the right setup for you.</p>", "cta_label": "Shop all products", "cta_link": "shopify://collections/all", "width": 760, "tight": true } }
+  },
+  "order": ["header", "intro", "values", "cta"]
+}

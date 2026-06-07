@@ -1,0 +1,63 @@
+{%- comment -%}
+  Customer experiences. Placeholder blocks are clearly marked for replacement and
+  ready to connect to a review app (Judge.me / Loox / Shopify / Yotpo).
+  Does NOT fabricate verified reviews.
+{%- endcomment -%}
+<section class="section">
+  <div class="page-width">
+    <div class="section-head"><div class="section-head__titles">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h2>{{ section.settings.heading | default: 'What our customers say' }}</h2>
+      {%- if section.settings.subheading != blank -%}<p class="section-sub">{{ section.settings.subheading }}</p>{%- endif -%}
+    </div></div>
+
+    {%- if section.settings.review_app_html != blank -%}
+      {{ section.settings.review_app_html }}
+    {%- else -%}
+      <div class="reviews-track">
+        {%- for block in section.blocks -%}
+          <div class="review-card reveal" {{ block.shopify_attributes }}>
+            <div class="rating" aria-label="{{ block.settings.stars }} out of 5"><span class="rating__stars" style="--pct: {{ block.settings.stars | times: 20 }}%"><span></span></span></div>
+            <p class="review-card__body">“{{ block.settings.quote }}”</p>
+            <div class="review-card__author">
+              <span class="review-avatar">{{ block.settings.name | slice: 0, 1 | upcase }}</span>
+              <div class="review-meta">
+                <strong>{{ block.settings.name }}</strong>
+                <span>{{ block.settings.location }}{% if block.settings.verified %} · <span class="verified">{% render 'icon', name: 'check', size: 12 %} Verified customer</span>{% endif %}</span>
+              </div>
+            </div>
+          </div>
+        {%- else -%}
+          <div class="review-card"><p class="text-muted">Connect a review app or add testimonial blocks in the theme editor. Placeholder — replace before going live.</p></div>
+        {%- endfor -%}
+      </div>
+      {%- if section.blocks.size > 0 and section.settings.placeholder_notice -%}
+        <p class="text-muted" style="font-size:.8rem;margin-top:14px">Note: sample testimonials shown for layout. Replace with real verified reviews (or connect a review app) before launch.</p>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Customer experiences" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What our customers say" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Real feedback from people who shop with us." },
+    { "type": "checkbox", "id": "placeholder_notice", "label": "Show 'replace before launch' note", "default": true },
+    { "type": "liquid", "id": "review_app_html", "label": "Review app embed (optional)", "info": "Paste your Judge.me / Loox / Yotpo widget here to replace placeholders." }
+  ],
+  "blocks": [
+    { "type": "review", "name": "Testimonial (placeholder)", "settings": [
+      { "type": "paragraph", "content": "Placeholder review — replace with a real verified review before launch." },
+      { "type": "range", "id": "stars", "label": "Stars", "min": 1, "max": 5, "step": 1, "default": 5 },
+      { "type": "textarea", "id": "quote", "label": "Quote", "default": "Smooth ordering, arrived quickly, and support actually helped me pick the right model." },
+      { "type": "text", "id": "name", "label": "Name / initials", "default": "Sample Customer" },
+      { "type": "text", "id": "location", "label": "Location", "default": "" },
+      { "type": "checkbox", "id": "verified", "label": "Show 'Verified customer'", "default": false }
+    ] }
+  ],
+  "presets": [ { "name": "Testimonials", "blocks": [ { "type": "review" }, { "type": "review" }, { "type": "review" } ] } ]
+}
+{% endschema %}

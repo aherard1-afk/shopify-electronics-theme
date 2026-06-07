@@ -1,0 +1,44 @@
+{%- comment -%} Compact trust strip: 3–4 points with calm icons. {%- endcomment -%}
+<section class="trust-strip">
+  <div class="page-width">
+    <div class="trust-strip__grid">
+      {%- for block in section.blocks -%}
+        <div class="trust-item" {{ block.shopify_attributes }}>
+          {% render 'icon', name: block.settings.icon, size: 26 %}
+          <div><strong>{{ block.settings.title }}</strong><span>{{ block.settings.text }}</span></div>
+        </div>
+      {%- else -%}
+        <div class="trust-item">{% render 'icon', name: 'lock', size: 26 %}<div><strong>Secure checkout</strong><span>Encrypted payment</span></div></div>
+        <div class="trust-item">{% render 'icon', name: 'truck', size: 26 %}<div><strong>Fast shipping</strong><span>On select electronics</span></div></div>
+        <div class="trust-item">{% render 'icon', name: 'headset', size: 26 %}<div><strong>Expert support</strong><span>Real specialists</span></div></div>
+        <div class="trust-item">{% render 'icon', name: 'rotate', size: 26 %}<div><strong>Easy returns</strong><span>Hassle-free process</span></div></div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trust strip",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "point",
+      "name": "Trust point",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "default": "lock", "options": [
+          { "value": "lock", "label": "Lock" }, { "value": "truck", "label": "Truck" }, { "value": "headset", "label": "Support" },
+          { "value": "rotate", "label": "Returns" }, { "value": "shield", "label": "Shield" }, { "value": "check", "label": "Check" }, { "value": "package", "label": "Package" } ] },
+        { "type": "text", "id": "title", "label": "Title", "default": "Secure checkout" },
+        { "type": "text", "id": "text", "label": "Subtext", "default": "Encrypted payment" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "Trust strip", "blocks": [
+    { "type": "point", "settings": { "icon": "lock", "title": "Secure checkout", "text": "Encrypted payment" } },
+    { "type": "point", "settings": { "icon": "truck", "title": "Fast shipping", "text": "On select electronics" } },
+    { "type": "point", "settings": { "icon": "headset", "title": "Expert support", "text": "Real specialists" } },
+    { "type": "point", "settings": { "icon": "rotate", "title": "Easy returns", "text": "Hassle-free process" } }
+  ] } ]
+}
+{% endschema %}

@@ -1,0 +1,77 @@
+{%- comment -%}
+  Product card — reused across home, collection, search, related, recently viewed.
+  Renders ONLY live store data. Never alters product info.
+  Usage: {% render 'product-card', product: product %}
+{%- endcomment -%}
+{%- liquid
+  assign on_sale = false
+  if product.compare_at_price > product.price
+    assign on_sale = true
+  endif
+  assign is_new = false
+  if product.tags contains 'new' or product.tags contains 'New'
+    assign is_new = true
+  endif
+  assign is_refurb = false
+  if product.tags contains 'refurbished' or product.tags contains 'Refurbished'
+    assign is_refurb = true
+  endif
+  assign is_preorder = false
+  if product.tags contains 'preorder' or product.tags contains 'pre-order'
+    assign is_preorder = true
+  endif
+  assign second = product.media[1]
+-%}
+<article class="card product-card reveal">
+  <a class="product-card__media" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+    <div class="product-card__badges">
+      {%- unless product.available -%}<span class="badge badge--soldout">Sold out</span>{%- endunless -%}
+      {%- if on_sale and product.available -%}<span class="badge badge--sale">Sale</span>{%- endif -%}
+      {%- if is_new -%}<span class="badge badge--new">New</span>{%- endif -%}
+      {%- if is_refurb -%}<span class="badge badge--refurb">Refurbished</span>{%- endif -%}
+      {%- if is_preorder -%}<span class="badge badge--preorder">Pre-order</span>{%- endif -%}
+    </div>
+    {%- if product.featured_media -%}
+      <img class="is-primary" src="{{ product.featured_media | image_url: width: 600 }}" alt="{{ product.featured_media.alt | default: product.title | escape }}" width="600" height="600" loading="lazy">
+      {%- if settings.show_secondary_image and second and second.media_type == 'image' -%}
+        <img class="is-secondary" src="{{ second | image_url: width: 600 }}" alt="" width="600" height="600" loading="lazy" aria-hidden="true">
+      {%- endif -%}
+    {%- else -%}
+      {{ 'product-1' | placeholder_svg_tag: 'product-card__placeholder' }}
+    {%- endif -%}
+
+    {%- if settings.show_quick_view -%}
+      <div class="product-card__quick">
+        <button type="button" class="btn btn--outline btn--sm btn--block" data-quick-view="{{ product.handle }}" style="background:var(--surface)">
+          {% render 'icon', name: 'search', size: 15 %} {{ 'products.product.quick_view' | t }}
+        </button>
+      </div>
+    {%- endif -%}
+  </a>
+
+  <div class="product-card__body">
+    {%- if settings.show_vendor and product.vendor != blank -%}
+      <span class="product-card__vendor">{{ product.vendor }}</span>
+    {%- endif -%}
+    <a href="{{ product.url }}"><h3 class="product-card__title">{{ product.title }}</h3></a>
+    {%- if settings.show_rating -%}{% render 'rating', product: product %}{%- endif -%}
+    <div class="product-card__price">{% render 'price', product: product %}</div>
+
+    <div class="product-card__actions">
+      {%- if product.available -%}
+        {%- if product.variants.size == 1 -%}
+          <form method="post" action="/cart/add" data-add-to-cart data-no-drawer>
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            <button type="submit" class="btn btn--accent btn--sm btn--block" data-atc-btn>
+              <span data-btn-label>{{ 'products.product.add_to_cart' | t }}</span>
+            </button>
+          </form>
+        {%- else -%}
+          <a href="{{ product.url }}" class="btn btn--outline btn--sm btn--block">{{ 'products.product.view_details' | t }}</a>
+        {%- endif -%}
+      {%- else -%}
+        <button class="btn btn--outline btn--sm btn--block" disabled>{{ 'products.product.sold_out' | t }}</button>
+      {%- endif -%}
+    </div>
+  </div>
+</article>

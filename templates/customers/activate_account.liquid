@@ -1,0 +1,12 @@
+<section class="section"><div class="page-width" style="max-width:420px">
+  <h1 style="text-align:center;margin-bottom:22px">Activate your account</h1>
+  <div class="card" style="padding:28px">
+    {%- form 'activate_customer_password' -%}
+      {%- if form.errors -%}<p style="color:var(--danger);margin-bottom:12px">{{ form.errors | default_errors }}</p>{%- endif -%}
+      <div class="field" style="margin-bottom:14px"><label for="ap">Password</label><input class="input" id="ap" type="password" name="customer[password]" required></div>
+      <div class="field"><label for="apc">Confirm password</label><input class="input" id="apc" type="password" name="customer[password_confirmation]" required></div>
+      <button type="submit" class="btn btn--accent btn--block" style="margin-top:16px">Activate account</button>
+      <button type="submit" name="decline" class="btn btn--ghost btn--block" style="margin-top:8px">Decline invitation</button>
+    {%- endform -%}
+  </div>
+</div></section>

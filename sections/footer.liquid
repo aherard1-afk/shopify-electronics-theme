@@ -1,0 +1,86 @@
+{%- comment -%} 4-column footer: brand mission, shop categories, customer care, company. {%- endcomment -%}
+<footer class="site-footer">
+  <div class="page-width">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="{{ routes.root_url }}" class="header__logo" style="font-size:1.3rem"><span class="logo-mark">●</span>{{ settings.logo_text | default: shop.name }}</a>
+        <p>{{ settings.brand_mission }}</p>
+        {% render 'social-icons' %}
+      </div>
+
+      <div class="footer__col">
+        <h4>{{ section.settings.col1_title | default: 'Shop' }}</h4>
+        {%- if section.settings.menu_shop != blank -%}
+          {%- for link in linklists[section.settings.menu_shop].links -%}<a href="{{ link.url }}">{{ link.title }}</a>{%- endfor -%}
+        {%- else -%}
+          <a href="{{ routes.all_products_collection_url }}">All products</a>
+          <a href="{{ routes.collections_url }}">Collections</a>
+          <a href="{{ routes.collections_url }}?sort_by=best-selling">Best sellers</a>
+          <a href="{{ routes.collections_url }}?sort_by=created-descending">New arrivals</a>
+        {%- endif -%}
+      </div>
+
+      <div class="footer__col">
+        <h4>{{ section.settings.col2_title | default: 'Customer care' }}</h4>
+        {%- if section.settings.menu_care != blank -%}
+          {%- for link in linklists[section.settings.menu_care].links -%}<a href="{{ link.url }}">{{ link.title }}</a>{%- endfor -%}
+        {%- else -%}
+          <a href="/pages/shipping-policy">Shipping policy</a>
+          <a href="/pages/returns-refunds">Returns &amp; refunds</a>
+          <a href="/pages/warranty">Warranty &amp; support</a>
+          <a href="/pages/faqs">FAQs</a>
+          <a href="{{ routes.account_url }}">Track order</a>
+        {%- endif -%}
+      </div>
+
+      <div class="footer__col">
+        <h4>{{ section.settings.col3_title | default: 'Company' }}</h4>
+        {%- if section.settings.menu_company != blank -%}
+          {%- for link in linklists[section.settings.menu_company].links -%}<a href="{{ link.url }}">{{ link.title }}</a>{%- endfor -%}
+        {%- else -%}
+          <a href="/pages/about-us">About us</a>
+          <a href="/pages/services">Our services</a>
+          <a href="/pages/contact">Contact</a>
+          <a href="/blogs/buying-guides">Buying guides</a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- if section.settings.show_footer_newsletter -%}
+      <div style="border-top:1px solid var(--border);padding-block:24px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap">
+        <div><strong>Stay in the loop</strong><p class="text-muted" style="font-size:.875rem">Buying guides, restock alerts, and exclusive tech offers.</p></div>
+        {%- form 'customer', class: 'newsletter__form', style: 'margin:0;max-width:420px' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <input class="input" type="email" name="contact[email]" placeholder="{{ 'general.newsletter.placeholder' | t }}" aria-label="{{ 'general.newsletter.label' | t }}" required>
+          <button type="submit" class="btn btn--accent">{{ 'general.newsletter.submit' | t }}</button>
+          {%- if form.posted_successfully? -%}<p class="verified" style="flex-basis:100%">{{ 'general.newsletter.success' | t }}</p>{%- endif -%}
+        {%- endform -%}
+      </div>
+    {%- endif -%}
+
+    <div class="footer__bottom">
+      <span>© {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</span>
+      <div class="footer__bottom-links">
+        <a href="/pages/privacy-policy">Privacy</a>
+        <a href="/pages/terms-of-service">Terms</a>
+        <a href="/pages/shipping-policy">Shipping</a>
+        <a href="/pages/returns-refunds">Returns</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "checkbox", "id": "show_footer_newsletter", "label": "Show newsletter in footer", "default": true },
+    { "type": "text", "id": "col1_title", "label": "Column 1 title", "default": "Shop" },
+    { "type": "link_list", "id": "menu_shop", "label": "Column 1 menu" },
+    { "type": "text", "id": "col2_title", "label": "Column 2 title", "default": "Customer care" },
+    { "type": "link_list", "id": "menu_care", "label": "Column 2 menu" },
+    { "type": "text", "id": "col3_title", "label": "Column 3 title", "default": "Company" },
+    { "type": "link_list", "id": "menu_company", "label": "Column 3 menu" }
+  ]
+}
+{% endschema %}

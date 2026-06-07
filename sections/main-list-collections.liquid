@@ -1,0 +1,20 @@
+{%- comment -%} All collections grid. {%- endcomment -%}
+<div class="collection-banner"><div class="page-width collection-banner__inner"><span class="eyebrow">Browse</span><h1>{{ section.settings.heading | default: 'All collections' }}</h1></div></div>
+<section class="section">
+  <div class="page-width">
+    <div class="cat-grid">
+      {%- for collection in collections -%}
+        <a class="cat-tile {% unless collection.image or collection.products.first.featured_media %}cat-tile--empty{% endunless %}" href="{{ collection.url }}">
+          <div class="cat-tile__img">
+            {%- if collection.image != blank -%}{{ collection.image | image_url: width: 500 | image_tag: loading: 'lazy', alt: collection.title }}
+            {%- elsif collection.products.first.featured_media != blank -%}{{ collection.products.first.featured_media | image_url: width: 500 | image_tag: loading: 'lazy', alt: collection.title }}{%- endif -%}
+          </div>
+          <span class="cat-tile__label"><small>{{ collection.products_count }} items</small>{{ collection.title }}</span>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{ "name": "Collections list", "settings": [ { "type": "text", "id": "heading", "label": "Heading", "default": "All collections" } ] }
+{% endschema %}

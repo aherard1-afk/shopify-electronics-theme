@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Northwire Electronics — Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;550;600;650;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/components.css">
+<style>:root{--accent:#3a6ea5;--accent-hover:#2f5a87;}
+/* preview-only image placeholders */
+.ph{background:linear-gradient(135deg,var(--surface-2),var(--surface-3));display:grid;place-items:center;color:var(--text-faint);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em}
+.ph svg{opacity:.5}</style>
+</head>
+<body data-template="index">
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- Utility bar -->
+<div class="utility-bar"><div class="page-width utility-bar__inner">
+  <p class="utility-bar__msg"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M1 4h13v12H1zM14 8h4l3 3v5h-7"/><circle cx="6" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg> Fast shipping on select electronics — expert support available, secure checkout.</p>
+  <div class="utility-bar__links"><a href="#">Help</a><a href="#">Track order</a><a href="#">Account</a></div>
+</div></div>
+
+<!-- Header -->
+<header class="site-header" data-sticky-header><div class="page-width"><div class="header__inner">
+  <button class="header-icon header__burger" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  <a href="#" class="header__logo"><span class="logo-mark">●</span>NORTHWIRE</a>
+  <form class="header__search search-form" role="search" onsubmit="return false">
+    <input class="input" type="search" placeholder="Search phones, laptops, audio…" aria-label="Search">
+    <button class="search-form__submit" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></button>
+  </form>
+  <div class="header__actions">
+    <button class="header-icon theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
+      <span class="icon-moon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg></span>
+      <span class="icon-sun"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></span>
+    </button>
+    <a href="#" class="header-icon" aria-label="Account"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></a>
+    <a href="#cart" class="header-icon" data-open-layer="cart-drawer" aria-label="Cart"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg><span class="cart-count" data-cart-count>2</span></a>
+  </div>
+</div></div>
+<nav class="main-nav"><div class="page-width"><ul class="main-nav__list">
+  <li class="main-nav__item"><a class="main-nav__link" aria-current="page" href="#">Home</a></li>
+  <li class="main-nav__item"><a class="main-nav__link" href="#">Shop</a></li>
+  <li class="main-nav__item"><a class="main-nav__link" href="#best-sellers">Best Sellers</a></li>
+  <li class="main-nav__item"><a class="main-nav__link" href="#">New Arrivals</a></li>
+  <li class="main-nav__item"><a class="main-nav__link" href="#">Categories</a></li>
+  <li class="main-nav__item"><a class="main-nav__link" href="#">Brands</a></li>
+  <li class="main-nav__item"><a class="main-nav__link" href="#">Services</a></li>
+  <li class="main-nav__item"><a class="main-nav__link" href="#">FAQs</a></li>
+  <li class="main-nav__item"><a class="main-nav__link" href="#">Contact</a></li>
+</ul></div></nav>
+</header>
+
+<main id="main">
+<!-- Hero -->
+<section class="hero"><div class="hero__slide" style="opacity:1">
+  <div class="hero__bg ph" style="position:absolute;inset:0">PRODUCT HERO IMAGE</div>
+  <div class="hero__bg" style="background:linear-gradient(90deg,rgba(28,34,39,.55),transparent 60%)"></div>
+  <div class="page-width"><div class="hero__content">
+    <span class="eyebrow hero__eyebrow">Trusted electronics</span>
+    <h1 class="hero__title">Reliable tech for work, home, and everything in between.</h1>
+    <p class="hero__text">Expert support, secure checkout, and fast shipping on select electronics.</p>
+    <div class="hero__ctas"><a class="btn btn--accent btn--lg" href="#">Shop latest tech</a><a class="btn btn--outline btn--lg" href="#" style="background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.5)">Get expert help</a></div>
+  </div></div>
+</div></section>
+
+<!-- Trust strip -->
+<section class="trust-strip"><div class="page-width"><div class="trust-strip__grid">
+  <div class="trust-item"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><div><strong>Secure checkout</strong><span>Encrypted payment</span></div></div>
+  <div class="trust-item"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M1 4h13v12H1zM14 8h4l3 3v5h-7"/><circle cx="6" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg><div><strong>Fast shipping</strong><span>On select electronics</span></div></div>
+  <div class="trust-item"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><path d="M4 14a2 2 0 0 1 2-2h1v5H6a2 2 0 0 1-2-2z"/></svg><div><strong>Expert support</strong><span>Real specialists</span></div></div>
+  <div class="trust-item"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg><div><strong>Easy returns</strong><span>Hassle-free process</span></div></div>
+</div></div></section>
+
+<!-- Best sellers -->
+<section class="section" id="best-sellers"><div class="page-width">
+  <div class="section-head"><div class="section-head__titles"><span class="eyebrow">Customer favourites</span><h2>Best sellers</h2><p class="section-sub">The tech our customers reach for most.</p></div><a class="link-arrow" href="#">View all →</a></div>
+  <div class="product-grid" id="grid"></div>
+</div></section>
+
+<!-- Category grid -->
+<section class="section"><div class="page-width">
+  <div class="section-head"><div class="section-head__titles"><span class="eyebrow">Our range</span><h2>Shop our range</h2></div><a class="link-arrow" href="#">All categories →</a></div>
+  <div class="cat-grid" id="cats"></div>
+</div></section>
+
+<!-- Editorial -->
+<section class="section"><div class="page-width"><div class="split">
+  <div class="split__media"><div class="ph" style="aspect-ratio:4/3;border-radius:var(--radius-lg)">LIFESTYLE IMAGE</div></div>
+  <div class="split__body"><span class="eyebrow">Everyday tech</span><h2>Tech that fits the way you live.</h2><p class="text-muted" style="margin:14px 0 24px;font-size:var(--fs-lg)">From the home office to the living room, we help you choose dependable electronics that simply work — backed by people who actually know them.</p><a class="btn btn--accent" href="#">Shop smart home</a></div>
+</div></div></section>
+
+<!-- Buying paths -->
+<section class="section"><div class="page-width">
+  <div class="section-head"><div class="section-head__titles"><span class="eyebrow">Shop by need</span><h2>Find your setup</h2></div></div>
+  <div class="paths">
+    <a class="path-card" href="#"><div class="path-card__img ph">WORK FROM HOME</div><div class="path-card__body"><h3>Work from home</h3><p style="opacity:.9;font-size:.9rem;margin-bottom:10px">Everything you need for a focused, comfortable setup.</p><span class="link-arrow" style="color:#fff">Explore →</span></div></a>
+    <a class="path-card" href="#"><div class="path-card__img ph">EVERYDAY ESSENTIALS</div><div class="path-card__body"><h3>Everyday essentials</h3><p style="opacity:.9;font-size:.9rem;margin-bottom:10px">Dependable tech for daily life.</p><span class="link-arrow" style="color:#fff">Explore →</span></div></a>
+    <a class="path-card" href="#"><div class="path-card__img ph">GAMING</div><div class="path-card__body"><h3>Gaming &amp; entertainment</h3><p style="opacity:.9;font-size:.9rem;margin-bottom:10px">Level up your screen, sound, and play.</p><span class="link-arrow" style="color:#fff">Explore →</span></div></a>
+  </div>
+</div></section>
+
+<!-- Value props -->
+<section class="section section--tight"><div class="page-width">
+  <div class="section-head"><div class="section-head__titles"><span class="eyebrow">Confidence built in</span><h2>Why shop with us</h2></div></div>
+  <div class="value-grid" id="vals"></div>
+</div></section>
+
+<!-- Testimonials -->
+<section class="section"><div class="page-width">
+  <div class="section-head"><div class="section-head__titles"><span class="eyebrow">Customer experiences</span><h2>What our customers say</h2><p class="section-sub">Real feedback from people who shop with us.</p></div></div>
+  <div class="reviews-track" id="reviews"></div>
+  <p class="text-muted" style="font-size:.8rem;margin-top:14px">Note: sample testimonials shown for layout. Replace with real verified reviews (or connect a review app) before launch.</p>
+</div></section>
+
+<!-- Stats -->
+<section class="section section--tight"><div class="page-width"><div class="stats"><div class="stats__grid">
+  <div><div class="stat__num">Secure</div><div class="stat__label">Encrypted orders</div></div>
+  <div><div class="stat__num">Fast</div><div class="stat__label">Shipping on select items</div></div>
+  <div><div class="stat__num">Expert</div><div class="stat__label">Support you can reach</div></div>
+  <div><div class="stat__num">Backed</div><div class="stat__label">Warranty support</div></div>
+</div></div></div></section>
+
+<!-- Newsletter -->
+<section class="section"><div class="page-width"><div class="newsletter">
+  <span class="eyebrow">Stay informed</span><h2>Get buying guides, restock alerts, and exclusive tech offers.</h2>
+  <p class="text-muted" style="max-width:52ch;margin:10px auto 0">Useful, occasional emails — no spam. Unsubscribe anytime.</p>
+  <form class="newsletter__form" onsubmit="return false"><input class="input" type="email" placeholder="you@email.com" aria-label="Email"><button class="btn btn--accent">Subscribe</button></form>
+</div></div></section>
+
+<!-- FAQ -->
+<section class="section"><div class="page-width" style="max-width:840px">
+  <div class="section-head" style="justify-content:center;text-align:center"><div class="section-head__titles" style="margin-inline:auto"><span class="eyebrow">Answers</span><h2>Frequently asked questions</h2></div></div>
+  <div class="accordion" id="faq"></div>
+  <div style="text-align:center;margin-top:24px"><a class="btn btn--outline" href="#">See all FAQs</a></div>
+</div></section>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer"><div class="page-width">
+  <div class="footer__top">
+    <div class="footer__brand"><a href="#" class="header__logo" style="font-size:1.3rem"><span class="logo-mark">●</span>NORTHWIRE</a><p>Trusted electronics for work, home, and everything in between — curated, supported, and shipped with care.</p>
+      <div class="footer__social"><a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a><a href="#" aria-label="X"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4l16 16M20 4 4 20"/></svg></a></div>
+    </div>
+    <div class="footer__col"><h4>Shop</h4><a href="#">All products</a><a href="#">Collections</a><a href="#">Best sellers</a><a href="#">New arrivals</a></div>
+    <div class="footer__col"><h4>Customer care</h4><a href="#">Shipping policy</a><a href="#">Returns &amp; refunds</a><a href="#">Warranty &amp; support</a><a href="#">FAQs</a><a href="#">Track order</a></div>
+    <div class="footer__col"><h4>Company</h4><a href="#">About us</a><a href="#">Our services</a><a href="#">Contact</a><a href="#">Buying guides</a></div>
+  </div>
+  <div class="footer__bottom"><span>© 2026 Northwire Electronics. All rights reserved.</span><div class="footer__bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Shipping</a><a href="#">Returns</a></div></div>
+</div></footer>
+
+<!-- Cart drawer (demo) -->
+<div class="drawer-backdrop" data-backdrop></div>
+<aside class="drawer" id="cart-drawer" aria-hidden="true" aria-label="Your cart">
+  <div class="drawer__head"><span class="drawer__title">Your cart</span><button class="drawer__close" data-close-layer aria-label="Close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+  <div class="drawer__body">
+    <div class="cart-line"><div class="cart-line__media ph">IMG</div><div><div class="cart-line__title">Wireless Noise-Cancelling Headphones</div><div class="cart-line__variant">Charcoal</div><div style="margin-top:8px"><div class="qty"><button>−</button><input value="1" readonly><button>+</button></div></div></div><div style="font-weight:650;font-size:.9rem">$249.00</div></div>
+    <div class="cart-line"><div class="cart-line__media ph">IMG</div><div><div class="cart-line__title">USB-C Fast Charger 65W</div><div class="cart-line__variant">White</div><div style="margin-top:8px"><div class="qty"><button>−</button><input value="1" readonly><button>+</button></div></div></div><div style="font-weight:650;font-size:.9rem">$39.00</div></div>
+  </div>
+  <div class="drawer__foot">
+    <div class="cart-trust"><span>🔒 Secure</span><span>🚚 Fast shipping</span><span>↩ Easy returns</span></div>
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px"><span style="font-weight:650">Subtotal</span><span style="font-weight:700;font-size:1.15rem">$288.00</span></div>
+    <p class="text-muted" style="font-size:.8rem;margin-bottom:12px">Shipping &amp; taxes calculated at checkout.</p>
+    <button class="btn btn--accent btn--lg btn--block">Checkout</button>
+  </div>
+</aside>
+
+<div class="toast" data-toast><span data-toast-msg></span></div>
+
+<script src="../assets/global.js"></script>
+<script>
+// Populate demo content
+var products=[
+  ["Audio","Wireless Noise-Cancelling Headphones","$249.00","$299.00","sale","4.8"],
+  ["Phones","FlagPhone Pro 256GB","$899.00","","new","4.7"],
+  ["Laptops","UltraBook 14\" M-Series","$1,199.00","","","4.9"],
+  ["Smart Home","Smart Hub + Sensor Kit","$129.00","$159.00","sale","4.5"],
+  ["Audio","Compact Bluetooth Speaker","$79.00","","","4.6"],
+  ["Watches","FitWatch GPS 2","$199.00","","new","4.4"],
+  ["Monitors","27\" QHD IPS Monitor","$329.00","","refurb","4.7"],
+  ["Accessories","USB-C Fast Charger 65W","$39.00","","","4.8"]
+];
+var g=document.getElementById("grid");
+products.forEach(function(p){
+  var badge = p[4]==="sale"?'<span class="badge badge--sale">Sale</span>':p[4]==="new"?'<span class="badge badge--new">New</span>':p[4]==="refurb"?'<span class="badge badge--refurb">Refurbished</span>':'';
+  var pct=(parseFloat(p[5])/5*100);
+  var price = p[3]?'<span class="price price--on-sale"><span class="price__sale">'+p[2]+'</span> <s class="price__compare">'+p[3]+'</s></span>':'<span class="price"><span class="price__regular">'+p[2]+'</span></span>';
+  g.insertAdjacentHTML("beforeend",
+   '<article class="card product-card is-in"><a class="product-card__media" href="#"><div class="product-card__badges">'+badge+'</div><div class="ph" style="position:absolute;inset:0">'+p[0].toUpperCase()+'</div><div class="product-card__quick"><button class="btn btn--outline btn--sm btn--block" style="background:var(--surface)">🔍 Quick view</button></div></a><div class="product-card__body"><span class="product-card__vendor">'+p[0]+'</span><a href="#"><h3 class="product-card__title">'+p[1]+'</h3></a><span class="rating"><span class="rating__stars" style="--pct:'+pct+'%"><span></span></span><span class="rating__count">('+p[5]+')</span></span><div class="product-card__price">'+price+'</div><div class="product-card__actions"><button class="btn btn--accent btn--sm btn--block" data-atc-btn><span data-btn-label>Add to cart</span></button></div></div></article>');
+});
+var cats=["Audio","Phones","Laptops","Smart Home","Smart Watches","Monitors","Accessories","Gaming"];
+var cg=document.getElementById("cats");
+cats.forEach(function(c){cg.insertAdjacentHTML("beforeend",'<a class="cat-tile" href="#"><div class="cat-tile__img ph">'+c.toUpperCase()+'</div><span class="cat-tile__label"><small>Category</small>'+c+'</span></a>');});
+var vals=[["✓","Vetted quality","We stock dependable products and stand behind what we sell."],["🛡","Warranty backed","Clear warranty support so you're covered after purchase."],["🎧","Expert support","Talk to people who know the products and can help you choose."],["📦","Easy setup","Compatibility guidance and clear specs so it works out of the box."]];
+var vg=document.getElementById("vals");
+vals.forEach(function(v){vg.insertAdjacentHTML("beforeend",'<div class="value-card is-in"><div style="font-size:26px;color:var(--accent);margin-bottom:14px">'+v[0]+'</div><h3>'+v[1]+'</h3><p>'+v[2]+'</p></div>');});
+var revs=[[5,"Smooth ordering, arrived quickly, and support actually helped me pick the right model.","S"],[5,"Great selection and honest advice. Felt like buying from people who know electronics.","M"],[4,"Fair prices and the warranty info was clear up front. Will shop again.","J"]];
+var rt=document.getElementById("reviews");
+revs.forEach(function(r){rt.insertAdjacentHTML("beforeend",'<div class="review-card"><span class="rating"><span class="rating__stars" style="--pct:'+(r[0]/5*100)+'%"><span></span></span></span><p class="review-card__body">“'+r[1]+'”</p><div class="review-card__author"><span class="review-avatar">'+r[2]+'</span><div class="review-meta"><strong>Sample Customer</strong><span>Verified placeholder</span></div></div></div>');});
+var faqs=[["How long does shipping take?","Delivery times depend on your location and the product. Estimates appear at checkout."],["Do products include warranty?","Most products include a manufacturer or store warranty. See the Warranty page."],["Can I return an item?","Yes — see our Returns & Refunds page for the window and steps."],["How do I track my order?","You'll get tracking by email once your order ships."]];
+var fq=document.getElementById("faq");
+faqs.forEach(function(f,i){fq.insertAdjacentHTML("beforeend",'<div class="accordion__item"><h3><button class="accordion__btn" data-accordion-btn aria-expanded="false" aria-controls="fp'+i+'">'+f[0]+' <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="accordion__panel" id="fp'+i+'" data-open="false"><div><p>'+f[1]+'</p></div></div></div>');});
+</script>
+</body>
+</html>

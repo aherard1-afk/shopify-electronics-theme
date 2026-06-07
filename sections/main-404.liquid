@@ -1,0 +1,16 @@
+{%- comment -%} 404 page. {%- endcomment -%}
+<section class="section">
+  <div class="page-width"><div class="empty-state">
+    {% render 'icon', name: 'search', size: 44 %}
+    <h1 style="margin:16px 0 8px">{{ 'general.404.title' | t }}</h1>
+    <p class="text-muted">{{ 'general.404.subtext' | t }}</p>
+    <div class="empty-state__cats">
+      <a href="{{ routes.root_url }}" class="btn btn--accent btn--sm">{{ 'general.404.link' | t }}</a>
+      <a href="{{ routes.all_products_collection_url }}" class="btn btn--outline btn--sm">Shop all</a>
+      <a href="/pages/contact" class="btn btn--outline btn--sm">Contact support</a>
+    </div>
+  </div></div>
+</section>
+{% schema %}
+{ "name": "404", "settings": [] }
+{% endschema %}

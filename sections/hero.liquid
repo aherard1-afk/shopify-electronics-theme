@@ -1,0 +1,75 @@
+{%- comment -%} Hero with up to 3 slides, arrows, dots, count, pause. Smooth fade. {%- endcomment -%}
+{%- assign slides = section.blocks | where: 'type', 'slide' -%}
+<section class="hero" data-hero data-autoplay="{{ section.settings.autoplay }}" data-delay="{{ section.settings.delay | times: 1000 }}" aria-roledescription="carousel" aria-label="Promotions">
+  {%- if slides.size > 1 -%}<span class="hero__count" data-hero-count>{{ slides.size }} slides</span>{%- endif -%}
+  {%- for block in slides limit: 3 -%}
+    <div class="hero__slide {% if block.settings.text_theme == 'light' %}hero--light{% endif %}" data-hero-slide style="opacity:{% if forloop.first %}1{% else %}0{% endif %}" aria-hidden="{% unless forloop.first %}true{% endunless %}" {{ block.shopify_attributes }}>
+      {%- if block.settings.image != blank -%}
+        <div class="hero__bg">{{ block.settings.image | image_url: width: 2000 | image_tag: loading: forloop.first | default: 'eager', sizes: '100vw', widths: '600,1000,1400,2000' }}</div>
+      {%- else -%}
+        <div class="hero__bg" style="background:linear-gradient(120deg,var(--gunmetal-800),var(--gunmetal-600))"></div>
+      {%- endif -%}
+      <div class="page-width">
+        <div class="hero__content">
+          {%- if block.settings.eyebrow != blank -%}<span class="eyebrow hero__eyebrow">{{ block.settings.eyebrow }}</span>{%- endif -%}
+          <h1 class="hero__title">{{ block.settings.heading | default: 'Reliable tech for work, home, and everything in between.' }}</h1>
+          {%- if block.settings.text != blank -%}<p class="hero__text">{{ block.settings.text }}</p>{%- endif -%}
+          <div class="hero__ctas">
+            {%- if block.settings.cta_label != blank -%}<a href="{{ block.settings.cta_link }}" class="btn btn--accent btn--lg">{{ block.settings.cta_label }}</a>{%- endif -%}
+            {%- if block.settings.cta2_label != blank -%}<a href="{{ block.settings.cta2_link }}" class="btn btn--outline btn--lg" style="background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.5)">{{ block.settings.cta2_label }}</a>{%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- else -%}
+    <div class="hero__slide hero--light" data-hero-slide style="opacity:1">
+      <div class="hero__bg" style="background:linear-gradient(120deg,var(--surface-2),var(--surface-3))"></div>
+      <div class="page-width"><div class="hero__content">
+        <span class="eyebrow hero__eyebrow">Trusted electronics</span>
+        <h1 class="hero__title">Reliable tech for work, home, and everything in between.</h1>
+        <p class="hero__text">Add hero slides in the theme editor. Expert support, secure checkout, and fast shipping on select electronics.</p>
+        <div class="hero__ctas"><a href="{{ routes.all_products_collection_url }}" class="btn btn--accent btn--lg">Shop latest tech</a></div>
+      </div></div>
+    </div>
+  {%- endfor -%}
+
+  {%- if slides.size > 1 -%}
+    <div class="hero__arrows">
+      <button class="hero__arrow" data-hero-prev aria-label="{{ 'general.accessibility.previous' | t }}">{% render 'icon', name: 'chevron-left', size: 20 %}</button>
+      <button class="hero__arrow" data-hero-next aria-label="{{ 'general.accessibility.next' | t }}">{% render 'icon', name: 'chevron-right', size: 20 %}</button>
+    </div>
+    <div class="hero__dots" role="tablist">
+      {%- for block in slides limit: 3 -%}<button class="hero__dot" data-hero-dot aria-label="Go to slide {{ forloop.index }}" aria-current="{% if forloop.first %}true{% else %}false{% endif %}"></button>{%- endfor -%}
+    </div>
+    {%- if section.settings.autoplay -%}<button class="hero__pause" data-hero-pause>Pause</button>{%- endif -%}
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "max_blocks": 3,
+  "settings": [
+    { "type": "checkbox", "id": "autoplay", "label": "Autoplay", "default": false },
+    { "type": "range", "id": "delay", "label": "Autoplay delay (s)", "min": 4, "max": 10, "step": 1, "default": 6 }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Background image" },
+        { "type": "select", "id": "text_theme", "label": "Text theme", "options": [ { "value": "dark", "label": "Light text (on dark image)" }, { "value": "light", "label": "Dark text (on light image)" } ], "default": "dark" },
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Trusted electronics" },
+        { "type": "text", "id": "heading", "label": "Headline", "default": "Reliable tech for work, home, and everything in between." },
+        { "type": "textarea", "id": "text", "label": "Support line", "default": "Expert support, secure checkout, and fast shipping on select electronics." },
+        { "type": "text", "id": "cta_label", "label": "Primary CTA", "default": "Shop latest tech" },
+        { "type": "url", "id": "cta_link", "label": "Primary CTA link" },
+        { "type": "text", "id": "cta2_label", "label": "Secondary CTA", "default": "Get expert help" },
+        { "type": "url", "id": "cta2_link", "label": "Secondary CTA link" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "Hero", "blocks": [ { "type": "slide" } ] } ]
+}
+{% endschema %}

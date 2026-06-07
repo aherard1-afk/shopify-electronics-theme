@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "header": { "type": "page-header", "settings": { "eyebrow": "Customer care", "heading": "Warranty & Product Support", "intro": "Coverage and help for the products you buy from us.", "align": "left" } },
+    "body": { "type": "rich-text", "settings": { "content": "<h3>What's covered</h3><p>Most products we sell include a <strong>[WARRANTY DURATION — e.g. 12-month]</strong> warranty against manufacturing defects, either through the manufacturer or through our store. Coverage specifics can vary by product and brand; check the product page or your documentation for details.</p><h3>What's not covered</h3><p>Warranties generally do not cover accidental damage, misuse, unauthorized repairs, normal wear, or consumable parts. <strong>[Adjust to match your actual policy.]</strong></p><h3>How to make a warranty claim</h3><p>Contact us via the <a href=\"/pages/contact\">Contact page</a> with your order number and a description of the issue (photos or video help). We'll guide you through diagnosis, repair, replacement, or manufacturer support as appropriate.</p><h3>Product support</h3><p>Need help with setup, compatibility, or troubleshooting? Our team is happy to assist — reach out and we'll point you in the right direction.</p>", "width": 820 } },
+    "support": { "type": "feature-columns", "settings": { "eyebrow": "We're here to help", "heading": "Support, the human way", "columns": 3, "center": true, "tight": true }, "blocks": {
+      "f1": { "type": "feature", "settings": { "icon": "headset", "title": "Talk to a specialist", "text": "<p>Real people who know the products and can help you choose or fix.</p>" } },
+      "f2": { "type": "feature", "settings": { "icon": "shield", "title": "Warranty backed", "text": "<p>Clear coverage and a straightforward claims process.</p>" } },
+      "f3": { "type": "feature", "settings": { "icon": "rotate", "title": "Fair resolutions", "text": "<p>Repair, replace, or refund — handled honestly.</p>" } }
+    }, "block_order": ["f1","f2","f3"] }
+  },
+  "order": ["header", "body", "support"]
+}

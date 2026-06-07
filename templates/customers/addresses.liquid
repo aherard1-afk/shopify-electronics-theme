@@ -1,0 +1,35 @@
+<section class="section"><div class="page-width" style="max-width:720px">
+  <a href="{{ routes.account_url }}" class="link-arrow" style="margin-bottom:14px;display:inline-flex">{% render 'icon', name: 'chevron-left', size: 14 %} Back to account</a>
+  <h1 style="margin-bottom:22px">Your addresses</h1>
+
+  <div class="card" style="padding:24px;margin-bottom:24px">
+    <h3 style="margin-bottom:14px">Add a new address</h3>
+    {%- form 'customer_address', customer.new_address -%}
+      <div class="grid" style="grid-template-columns:1fr 1fr;gap:12px">
+        <div class="field"><label>First name</label><input class="input" name="address[first_name]"></div>
+        <div class="field"><label>Last name</label><input class="input" name="address[last_name]"></div>
+      </div>
+      <div class="field" style="margin-top:12px"><label>Address</label><input class="input" name="address[address1]"></div>
+      <div class="grid" style="grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+        <div class="field"><label>City</label><input class="input" name="address[city]"></div>
+        <div class="field"><label>Zip / Postal</label><input class="input" name="address[zip]"></div>
+      </div>
+      <div class="grid" style="grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+        <div class="field"><label>Country</label><input class="input" name="address[country]"></div>
+        <div class="field"><label>Phone</label><input class="input" name="address[phone]"></div>
+      </div>
+      <button type="submit" class="btn btn--accent" style="margin-top:16px">Save address</button>
+    {%- endform -%}
+  </div>
+
+  {%- for address in customer.addresses -%}
+    <div class="card" style="padding:20px;margin-bottom:14px">
+      <p>{{ address | format_address }}</p>
+      <div style="display:flex;gap:10px;margin-top:12px">
+        {%- form 'customer_address', address -%}
+          <button type="submit" class="btn btn--outline btn--sm">Update</button>
+        {%- endform -%}
+      </div>
+    </div>
+  {%- endfor -%}
+</div></section>

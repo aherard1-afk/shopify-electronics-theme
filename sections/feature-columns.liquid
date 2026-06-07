@@ -1,0 +1,45 @@
+{%- comment -%} Flexible icon/feature columns for Services & About pages. {%- endcomment -%}
+<section class="section{% if section.settings.tight %} section--tight{% endif %}">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <div class="section-head" style="{% if section.settings.center %}justify-content:center;text-align:center{% endif %}"><div class="section-head__titles" {% if section.settings.center %}style="margin-inline:auto"{% endif %}>
+        {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+        {%- if section.settings.subheading != blank -%}<p class="section-sub">{{ section.settings.subheading }}</p>{%- endif -%}
+      </div></div>
+    {%- endif -%}
+    <div class="value-grid" style="grid-template-columns:repeat({{ section.settings.columns }},1fr)">
+      {%- for block in section.blocks -%}
+        <div class="value-card reveal" {{ block.shopify_attributes }}>
+          {%- if block.settings.icon != 'none' -%}{% render 'icon', name: block.settings.icon, size: 28 %}{%- endif -%}
+          <h3>{{ block.settings.title }}</h3>
+          <div class="rte text-muted" style="font-size:.92rem">{{ block.settings.text }}</div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Feature columns",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading" },
+    { "type": "range", "id": "columns", "label": "Columns", "min": 2, "max": 4, "step": 1, "default": 3 },
+    { "type": "checkbox", "id": "center", "label": "Center header", "default": true },
+    { "type": "checkbox", "id": "tight", "label": "Tighter spacing", "default": false }
+  ],
+  "blocks": [
+    { "type": "feature", "name": "Feature", "settings": [
+      { "type": "select", "id": "icon", "label": "Icon", "default": "check", "options": [
+        { "value": "none", "label": "None" }, { "value": "check", "label": "Check" }, { "value": "shield", "label": "Shield" }, { "value": "headset", "label": "Support" },
+        { "value": "package", "label": "Package" }, { "value": "truck", "label": "Truck" }, { "value": "lock", "label": "Lock" }, { "value": "rotate", "label": "Returns" },
+        { "value": "laptop", "label": "Laptop" }, { "value": "phone", "label": "Phone" }, { "value": "home", "label": "Home" }, { "value": "watch", "label": "Watch" }, { "value": "monitor", "label": "Monitor" }, { "value": "tag", "label": "Tag" } ] },
+      { "type": "text", "id": "title", "label": "Title", "default": "Feature" },
+      { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Describe this feature.</p>" }
+    ] }
+  ],
+  "presets": [ { "name": "Feature columns", "blocks": [ { "type": "feature" }, { "type": "feature" }, { "type": "feature" } ] } ]
+}
+{% endschema %}

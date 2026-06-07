@@ -1,0 +1,141 @@
+{%- comment -%} Product detail page. Renders live product data only. {%- endcomment -%}
+{%- assign current = product.selected_or_first_available_variant -%}
+<section class="section" data-product-form-wrap>
+  <div class="page-width">
+    <nav class="text-muted" style="font-size:.8rem;margin-bottom:18px" aria-label="Breadcrumb">
+      <a href="{{ routes.root_url }}">Home</a> / {% if collection %}<a href="{{ collection.url }}">{{ collection.title }}</a> / {% endif %}<span>{{ product.title }}</span>
+    </nav>
+
+    <div class="product" data-product-form>
+      {%- comment -%} Gallery {%- endcomment -%}
+      <div class="product__gallery" data-gallery>
+        <div class="product__thumbs">
+          {%- for media in product.media -%}
+            <img class="product__thumb" data-gallery-thumb data-full="{{ media | image_url: width: 1200 }}" src="{{ media | image_url: width: 150 }}" alt="{{ media.alt | escape }}" width="72" height="72" aria-current="{% if forloop.first %}true{% else %}false{% endif %}" loading="lazy">
+          {%- endfor -%}
+        </div>
+        <div>
+          {%- if product.featured_media -%}
+            <img class="product__main-img" data-gallery-main src="{{ product.featured_media | image_url: width: 1200 }}" alt="{{ product.featured_media.alt | default: product.title | escape }}" width="700" height="700">
+          {%- else -%}
+            {{ 'product-1' | placeholder_svg_tag: 'product__main-img' }}
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- comment -%} Info {%- endcomment -%}
+      <div class="product__info" data-atc-anchor>
+        {%- if product.vendor != blank -%}<span class="product-card__vendor">{{ product.vendor }}</span>{%- endif -%}
+        <h1 class="product__title">{{ product.title }}</h1>
+        {% render 'rating', product: product %}
+        <div class="product__price-row">{% render 'price', variant: current %}</div>
+
+        {%- form 'product', product, class: 'product-form', novalidate: 'novalidate' -%}
+          <script type="application/json" data-variant-json>
+            [{%- for v in product.variants -%}{"id":{{ v.id }},"price":{{ v.price }},"available":{{ v.available }},"options":{{ v.options | json }}}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
+          </script>
+
+          {%- unless product.has_only_default_variant -%}
+            {%- for option in product.options_with_values -%}
+              <div class="variant-group" data-option-index="{{ forloop.index0 }}">
+                <span class="field-label">{{ option.name }}</span>
+                <div class="variant-options">
+                  {%- for value in option.values -%}
+                    <label class="variant-opt {% if option.selected_value == value %}is-selected{% endif %}">
+                      <input type="radio" name="option-{{ forloop.parentloop.index0 }}" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %}>
+                      {{ value }}
+                    </label>
+                  {%- endfor -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          {%- endunless -%}
+
+          <input type="hidden" name="id" value="{{ current.id }}" data-variant-id>
+
+          <div style="display:flex;gap:12px;align-items:stretch;margin-top:6px">
+            <div class="qty" style="flex-shrink:0">
+              <button type="button" data-qty-step="-1" aria-label="Decrease">{% render 'icon', name: 'minus', size: 16 %}</button>
+              <input type="number" name="quantity" value="1" min="1" inputmode="numeric" aria-label="Quantity" style="width:52px">
+              <button type="button" data-qty-step="1" aria-label="Increase">{% render 'icon', name: 'plus', size: 16 %}</button>
+            </div>
+            <button type="submit" class="btn btn--accent btn--lg btn--block" data-atc-btn {% unless current.available %}disabled{% endunless %}>
+              <span data-btn-label>{% if current.available %}{{ 'products.product.add_to_cart' | t }}{% else %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
+            </button>
+          </div>
+          {{ form | payment_button }}
+        {%- endform -%}
+
+        <div class="product-trust">
+          <span>{% render 'icon', name: 'lock', size: 18 %} Secure checkout</span>
+          <span>{% render 'icon', name: 'truck', size: 18 %} Fast shipping</span>
+          <span>{% render 'icon', name: 'shield', size: 18 %} Warranty support</span>
+          <span>{% render 'icon', name: 'rotate', size: 18 %} Easy returns</span>
+        </div>
+
+        {%- if product.description != blank -%}
+          <div class="rte" style="font-size:.95rem">{{ product.description | truncatewords: 60 }}</div>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- comment -%} Tabbed info sections {%- endcomment -%}
+    <div class="product-tabs accordion" style="max-width:900px;margin-inline:auto">
+      {%- assign tabs = section.blocks | where: 'type', 'tab' -%}
+      {%- if product.description != blank -%}
+        <div class="accordion__item"><h3><button class="accordion__btn" data-accordion-btn aria-expanded="true" aria-controls="tab-desc">{{ 'products.product.description' | t }} {% render 'icon', name: 'chevron-down', size: 18 %}</button></h3><div class="accordion__panel" id="tab-desc" data-open="true"><div><div class="rte" style="padding:0 20px 20px">{{ product.description }}</div></div></div></div>
+      {%- endif -%}
+      {%- for block in tabs -%}
+        {%- assign content = block.settings.content -%}
+        {%- if block.settings.use_metafield and block.settings.metafield_ns != blank and block.settings.metafield_key != blank -%}
+          {%- assign mf = product.metafields[block.settings.metafield_ns][block.settings.metafield_key] -%}
+          {%- if mf != blank -%}{%- assign content = mf | metafield_tag -%}{%- endif -%}
+        {%- endif -%}
+        {%- if content != blank -%}
+          <div class="accordion__item" {{ block.shopify_attributes }}><h3><button class="accordion__btn" data-accordion-btn aria-expanded="false" aria-controls="tab-{{ block.id }}">{{ block.settings.title }} {% render 'icon', name: 'chevron-down', size: 18 %}</button></h3><div class="accordion__panel" id="tab-{{ block.id }}" data-open="false"><div><div class="rte" style="padding:0 20px 20px">{{ content }}</div></div></div></div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{%- comment -%} Mobile sticky add to cart {%- endcomment -%}
+<div class="sticky-atc" data-sticky-atc>
+  <div style="min-width:0"><div style="font-weight:600;font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ product.title }}</div><div style="font-size:.85rem">{% render 'price', variant: current %}</div></div>
+  <a href="#main-content" class="btn btn--accent" onclick="document.querySelector('[data-atc-btn]') && document.querySelector('[data-atc-btn]').click(); return false;">{{ 'products.product.add_to_cart' | t }}</a>
+</div>
+
+<script>
+  document.addEventListener('click', function(e){
+    var step = e.target.closest('[data-qty-step]');
+    if(!step) return;
+    var input = step.parentElement.querySelector('input');
+    var v = Math.max(1, (parseInt(input.value,10)||1) + parseInt(step.getAttribute('data-qty-step'),10));
+    input.value = v;
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Product",
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Info tab",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Tab title", "default": "Specifications" },
+        { "type": "richtext", "id": "content", "label": "Content" },
+        { "type": "checkbox", "id": "use_metafield", "label": "Pull from a metafield instead", "default": false },
+        { "type": "text", "id": "metafield_ns", "label": "Metafield namespace" },
+        { "type": "text", "id": "metafield_key", "label": "Metafield key" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "Product", "blocks": [
+    { "type": "tab", "settings": { "title": "Specifications", "content": "<p>Add specs here, or pull from a product metafield.</p>" } },
+    { "type": "tab", "settings": { "title": "Shipping", "content": "<p>See our Shipping Policy for delivery times and costs.</p>" } },
+    { "type": "tab", "settings": { "title": "Returns", "content": "<p>See our Returns &amp; Refunds policy for details.</p>" } },
+    { "type": "tab", "settings": { "title": "Warranty", "content": "<p>Warranty details and product support information.</p>" } }
+  ] } ]
+}
+{% endschema %}

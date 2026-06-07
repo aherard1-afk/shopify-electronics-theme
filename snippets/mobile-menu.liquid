@@ -1,0 +1,34 @@
+{%- comment -%} Slide-in mobile navigation drawer. Uses the 'main-menu' linklist. {%- endcomment -%}
+<div class="drawer-backdrop" data-backdrop></div>
+<nav class="drawer drawer--left" id="mobile-menu" aria-hidden="true" aria-label="Main menu">
+  <div class="drawer__head">
+    <span class="drawer__title">Menu</span>
+    <button type="button" class="drawer__close" data-close-layer aria-label="{{ 'general.accessibility.close' | t }}">{% render 'icon', name: 'close', size: 20 %}</button>
+  </div>
+  <div class="drawer__body">
+    <form action="{{ routes.search_url }}" method="get" class="search-form" role="search" style="margin-bottom:18px">
+      <input class="input" type="search" name="q" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.label' | t }}">
+      <button type="submit" class="search-form__submit" aria-label="{{ 'general.search.submit' | t }}">{% render 'icon', name: 'search', size: 18 %}</button>
+    </form>
+    <ul>
+      {%- for link in linklists.main-menu.links -%}
+        <li>
+          <a href="{{ link.url }}" class="main-nav__link" style="display:block;padding:12px 0;font-size:1rem;border-bottom:1px solid var(--border)">{{ link.title }}</a>
+          {%- if link.links.size > 0 -%}
+            <ul style="padding:6px 0 10px 14px">
+              {%- for child in link.links -%}
+                <li><a href="{{ child.url }}" style="display:block;padding:8px 0;color:var(--text-muted);font-size:.9rem">{{ child.title }}</a></li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+    <div style="margin-top:20px;display:flex;gap:10px">
+      <a href="{{ routes.account_url }}" class="btn btn--outline btn--block">{% render 'icon', name: 'user', size: 16 %} Account</a>
+      <button type="button" class="btn btn--outline" data-theme-toggle aria-label="Toggle dark mode">
+        <span class="theme-toggle" style="width:auto;height:auto"><span class="icon-moon">{% render 'icon', name: 'moon', size: 16 %}</span><span class="icon-sun">{% render 'icon', name: 'sun', size: 16 %}</span></span>
+      </button>
+    </div>
+  </div>
+</nav>

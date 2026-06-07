@@ -1,0 +1,27 @@
+{%- comment -%}
+  Star rating. Reads common review-app metafields so it works once a review
+  app is connected (Judge.me, Loox, Shopify Product Reviews, Yotpo).
+  Renders nothing if no rating data exists — no fake stars.
+  Usage: {% render 'rating', product: product %}
+{%- endcomment -%}
+{%- liquid
+  assign value = 0
+  assign count = 0
+  if product.metafields.reviews.rating.value != blank
+    assign value = product.metafields.reviews.rating.value.rating | times: 1.0
+    assign count = product.metafields.reviews.rating_count.value | default: 0
+  elsif product.metafields.loox.avg_rating != blank
+    assign value = product.metafields.loox.avg_rating.value | times: 1.0
+    assign count = product.metafields.loox.num_reviews.value | default: 0
+  elsif product.metafields.judgeme.badge != blank
+    assign value = product.metafields.judgeme.rating.value | times: 1.0
+    assign count = product.metafields.judgeme.review_count.value | default: 0
+  endif
+  assign pct = value | times: 20.0
+-%}
+{%- if value > 0 -%}
+  <span class="rating" aria-label="Rated {{ value }} out of 5{% if count > 0 %} from {{ count }} reviews{% endif %}">
+    <span class="rating__stars" style="--pct: {{ pct }}%"><span></span></span>
+    {%- if count > 0 -%}<span class="rating__count">({{ count }})</span>{%- endif -%}
+  </span>
+{%- endif -%}

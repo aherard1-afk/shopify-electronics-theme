@@ -1,0 +1,55 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "blocks": {
+        "s1": { "type": "slide", "settings": { "text_theme": "dark", "eyebrow": "Trusted electronics", "heading": "Reliable tech for work, home, and everything in between.", "text": "Expert support, secure checkout, and fast shipping on select electronics.", "cta_label": "Shop latest tech", "cta_link": "shopify://collections/all", "cta2_label": "Get expert help", "cta2_link": "shopify://pages/contact" } }
+      },
+      "block_order": ["s1"],
+      "settings": { "autoplay": false, "delay": 6 }
+    },
+    "trust": { "type": "trust-strip", "blocks": {
+      "t1": { "type": "point", "settings": { "icon": "lock", "title": "Secure checkout", "text": "Encrypted payment" } },
+      "t2": { "type": "point", "settings": { "icon": "truck", "title": "Fast shipping", "text": "On select electronics" } },
+      "t3": { "type": "point", "settings": { "icon": "headset", "title": "Expert support", "text": "Real specialists" } },
+      "t4": { "type": "point", "settings": { "icon": "rotate", "title": "Easy returns", "text": "Hassle-free process" } }
+    }, "block_order": ["t1","t2","t3","t4"], "settings": {} },
+    "best_sellers": { "type": "featured-products", "settings": { "anchor_id": "best-sellers", "eyebrow": "Customer favourites", "heading": "Best sellers", "subheading": "The tech our customers reach for most.", "count": 8, "layout": "carousel" } },
+    "categories": { "type": "category-grid", "blocks": {
+      "c1": { "type": "category", "settings": { "kicker": "Category", "title": "Audio" } },
+      "c2": { "type": "category", "settings": { "kicker": "Category", "title": "Phones" } },
+      "c3": { "type": "category", "settings": { "kicker": "Category", "title": "Laptops" } },
+      "c4": { "type": "category", "settings": { "kicker": "Category", "title": "Smart Home" } },
+      "c5": { "type": "category", "settings": { "kicker": "Category", "title": "Smart Watches" } },
+      "c6": { "type": "category", "settings": { "kicker": "Category", "title": "Monitors" } },
+      "c7": { "type": "category", "settings": { "kicker": "Category", "title": "Accessories" } },
+      "c8": { "type": "category", "settings": { "kicker": "Category", "title": "Gaming" } }
+    }, "block_order": ["c1","c2","c3","c4","c5","c6","c7","c8"], "settings": { "eyebrow": "Our range", "heading": "Shop our range" } },
+    "editorial": { "type": "editorial-split", "settings": { "eyebrow": "Everyday tech", "heading": "Tech that fits the way you live.", "text": "From the home office to the living room, we help you choose dependable electronics that simply work — backed by people who actually know them.", "cta_label": "Shop smart home", "cta_link": "shopify://collections/all", "reverse": false } },
+    "paths": { "type": "buying-paths", "blocks": {
+      "p1": { "type": "path", "settings": { "title": "Work from home", "text": "Everything you need for a focused, comfortable setup.", "cta": "Explore" } },
+      "p2": { "type": "path", "settings": { "title": "Everyday essentials", "text": "Dependable tech for daily life.", "cta": "Explore" } },
+      "p3": { "type": "path", "settings": { "title": "Gaming & entertainment", "text": "Level up your screen, sound, and play.", "cta": "Explore" } }
+    }, "block_order": ["p1","p2","p3"], "settings": { "eyebrow": "Shop by need", "heading": "Find your setup" } },
+    "values": { "type": "value-props", "blocks": {
+      "v1": { "type": "prop", "settings": { "icon": "check", "title": "Vetted quality", "text": "We stock dependable products and stand behind what we sell." } },
+      "v2": { "type": "prop", "settings": { "icon": "shield", "title": "Warranty backed", "text": "Clear warranty support so you're covered after purchase." } },
+      "v3": { "type": "prop", "settings": { "icon": "headset", "title": "Expert support", "text": "Talk to people who know the products and can help you choose." } },
+      "v4": { "type": "prop", "settings": { "icon": "package", "title": "Easy setup", "text": "Compatibility guidance and clear specs so it works out of the box." } }
+    }, "block_order": ["v1","v2","v3","v4"], "settings": { "eyebrow": "Confidence built in", "heading": "Why shop with us" } },
+    "reviews": { "type": "testimonials", "blocks": {
+      "r1": { "type": "review", "settings": { "stars": 5, "quote": "Smooth ordering, arrived quickly, and support actually helped me pick the right model.", "name": "Sample Customer", "location": "", "verified": false } },
+      "r2": { "type": "review", "settings": { "stars": 5, "quote": "Great selection and honest advice. Felt like buying from people who know electronics.", "name": "Sample Customer", "location": "", "verified": false } },
+      "r3": { "type": "review", "settings": { "stars": 4, "quote": "Fair prices and the warranty info was clear up front. Will shop again.", "name": "Sample Customer", "location": "", "verified": false } }
+    }, "block_order": ["r1","r2","r3"], "settings": { "eyebrow": "Customer experiences", "heading": "What our customers say", "subheading": "Real feedback from people who shop with us.", "placeholder_notice": true } },
+    "stats": { "type": "stats-band", "blocks": {
+      "st1": { "type": "stat", "settings": { "value": "Secure", "label": "Encrypted orders" } },
+      "st2": { "type": "stat", "settings": { "value": "Fast", "label": "Shipping on select items" } },
+      "st3": { "type": "stat", "settings": { "value": "Expert", "label": "Support you can reach" } },
+      "st4": { "type": "stat", "settings": { "value": "Backed", "label": "Warranty support" } }
+    }, "block_order": ["st1","st2","st3","st4"], "settings": {} },
+    "newsletter": { "type": "newsletter", "settings": { "eyebrow": "Stay informed", "heading": "Get buying guides, restock alerts, and exclusive tech offers.", "text": "Useful, occasional emails — no spam. Unsubscribe anytime." } },
+    "faq": { "type": "faq", "settings": { "eyebrow": "Answers", "heading": "Frequently asked questions", "show_link": true, "link": "shopify://pages/faqs" } }
+  },
+  "order": ["hero","trust","best_sellers","categories","editorial","paths","values","reviews","stats","newsletter","faq"]
+}

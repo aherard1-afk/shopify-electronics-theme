@@ -1,0 +1,25 @@
+{
+  "current": {
+    "logo_text": "NORTHWIRE",
+    "brand_mission": "Trusted electronics for work, home, and everything in between — curated, supported, and shipped with care.",
+    "accent_color": "#3a6ea5",
+    "accent_color_hover": "#2f5a87",
+    "respect_os_theme": false,
+    "heading_font": "assistant_n6",
+    "body_font": "assistant_n4",
+    "show_vendor": true,
+    "show_rating": true,
+    "show_secondary_image": true,
+    "show_quick_view": true,
+    "cart_type": "drawer",
+    "cart_reassurance": "<p>Secure checkout. Encrypted payment. Easy returns.</p>",
+    "support_email": "support@example.com",
+    "support_hours": "Mon–Fri, 9am–6pm"
+  },
+  "presets": {
+    "Northwire Electronics": {
+      "accent_color": "#3a6ea5",
+      "accent_color_hover": "#2f5a87"
+    }
+  }
+}

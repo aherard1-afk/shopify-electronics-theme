@@ -1,0 +1,97 @@
+{%- comment -%}
+  Collection listing with Shopify storefront filters (Search & Discovery),
+  sorting, active chips, sidebar + mobile drawer. Live products only.
+{%- endcomment -%}
+{%- paginate collection.products by 24 -%}
+<div class="collection-banner">
+  <div class="page-width collection-banner__inner">
+    <nav class="text-muted" style="font-size:.8rem;margin-bottom:10px"><a href="{{ routes.root_url }}">Home</a> / <a href="{{ routes.collections_url }}">Collections</a> / <span>{{ collection.title }}</span></nav>
+    <h1>{{ collection.title }}</h1>
+    {%- if collection.description != blank -%}<div class="rte text-muted" style="margin-top:10px">{{ collection.description }}</div>{%- endif -%}
+  </div>
+</div>
+
+<section class="section">
+  <div class="page-width">
+    <div class="collection-toolbar">
+      <div style="display:flex;align-items:center;gap:14px">
+        <button type="button" class="btn btn--outline btn--sm filter-trigger" data-open-layer="filter-drawer">{% render 'icon', name: 'menu', size: 16 %} {{ 'collections.general.filters' | t }}</button>
+        <span class="collection-count">{{ 'collections.general.products_count' | t: count: collection.products_count }}</span>
+      </div>
+      <form method="get" style="display:flex;align-items:center;gap:8px">
+        {%- for f in collection.filters -%}{%- for v in f.active_values -%}<input type="hidden" name="{{ v.param_name }}" value="{{ v.value }}">{%- endfor -%}{%- endfor -%}
+        <label class="field-label" for="sort-by">{{ 'collections.general.sort_by' | t }}</label>
+        <select id="sort-by" name="sort_by" onchange="this.form.submit()" style="max-width:220px">
+          {%- assign sort = collection.sort_by | default: collection.default_sort_by -%}
+          <option value="manual" {% if sort == 'manual' %}selected{% endif %}>{{ 'collections.sorting.featured' | t }}</option>
+          <option value="best-selling" {% if sort == 'best-selling' %}selected{% endif %}>{{ 'collections.sorting.best_selling' | t }}</option>
+          <option value="price-ascending" {% if sort == 'price-ascending' %}selected{% endif %}>{{ 'collections.sorting.price_asc' | t }}</option>
+          <option value="price-descending" {% if sort == 'price-descending' %}selected{% endif %}>{{ 'collections.sorting.price_desc' | t }}</option>
+          <option value="created-descending" {% if sort == 'created-descending' %}selected{% endif %}>{{ 'collections.sorting.created_desc' | t }}</option>
+          <option value="title-ascending" {% if sort == 'title-ascending' %}selected{% endif %}>{{ 'collections.sorting.title_asc' | t }}</option>
+        </select>
+      </form>
+    </div>
+
+    {%- comment -%} Active filter chips {%- endcomment -%}
+    {%- assign has_active = false -%}
+    {%- for f in collection.filters -%}{%- if f.active_values.size > 0 -%}{%- assign has_active = true -%}{%- endif -%}{%- endfor -%}
+    {%- if has_active -%}
+      <div class="active-chips">
+        {%- for f in collection.filters -%}
+          {%- for v in f.active_values -%}
+            <span class="tag-chip">{{ f.label }}: {{ v.label }} <a href="{{ v.url_to_remove }}" aria-label="Remove filter {{ v.label }}">{% render 'icon', name: 'close', size: 13 %}</a></span>
+          {%- endfor -%}
+          {%- if f.type == 'price_range' -%}{%- if f.min_value.value or f.max_value.value -%}<span class="tag-chip">{{ f.label }} <a href="{{ f.url_to_remove }}">{% render 'icon', name: 'close', size: 13 %}</a></span>{%- endif -%}{%- endif -%}
+        {%- endfor -%}
+        <a href="{{ collection.url }}" class="link-arrow" data-clear-filters>{{ 'collections.general.clear_all' | t }}</a>
+      </div>
+    {%- endif -%}
+
+    <div class="collection-layout">
+      {%- comment -%} Desktop sidebar {%- endcomment -%}
+      <aside class="filters" aria-label="Filters">
+        {% render 'facets', collection: collection %}
+      </aside>
+
+      {%- comment -%} Product grid {%- endcomment -%}
+      <div>
+        {%- if collection.products.size > 0 -%}
+          <div class="product-grid">
+            {%- for product in collection.products -%}{% render 'product-card', product: product %}{%- endfor -%}
+          </div>
+          {%- if paginate.pages > 1 -%}
+            <nav class="pagination" style="display:flex;gap:8px;justify-content:center;margin-top:40px;flex-wrap:wrap" aria-label="Pagination">
+              {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}" class="btn btn--outline btn--sm">{% render 'icon', name: 'chevron-left', size: 14 %} Prev</a>{%- endif -%}
+              {%- for part in paginate.parts -%}
+                {%- if part.is_link -%}<a href="{{ part.url }}" class="btn btn--outline btn--sm">{{ part.title }}</a>
+                {%- else -%}<span class="btn btn--sm" style="background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)">{{ part.title }}</span>{%- endif -%}
+              {%- endfor -%}
+              {%- if paginate.next -%}<a href="{{ paginate.next.url }}" class="btn btn--outline btn--sm">Next {% render 'icon', name: 'chevron-right', size: 14 %}</a>{%- endif -%}
+            </nav>
+          {%- endif -%}
+        {%- else -%}
+          <div class="empty-state">
+            {% render 'icon', name: 'search', size: 40 %}
+            <h2 style="margin:14px 0 8px">{{ 'collections.general.empty' | t }}</h2>
+            <p class="text-muted">Try removing a filter, or browse another category.</p>
+            <div class="empty-state__cats"><a href="{{ collection.url }}" class="btn btn--outline btn--sm" data-clear-filters>{{ 'collections.general.clear_all' | t }}</a><a href="{{ routes.collections_url }}" class="btn btn--outline btn--sm">All categories</a></div>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{%- comment -%} Mobile filter drawer {%- endcomment -%}
+<div class="drawer-backdrop" data-backdrop></div>
+<aside class="drawer drawer--left" id="filter-drawer" aria-hidden="true" aria-label="{{ 'collections.general.filters' | t }}">
+  <div class="drawer__head"><span class="drawer__title">{{ 'collections.general.filters' | t }}</span><button class="drawer__close" data-close-layer aria-label="{{ 'general.accessibility.close' | t }}">{% render 'icon', name: 'close', size: 20 %}</button></div>
+  <div class="drawer__body">{% render 'facets', collection: collection, mobile: true %}</div>
+  <div class="drawer__foot" style="display:flex;gap:10px"><a href="{{ collection.url }}" class="btn btn--ghost" data-clear-filters>{{ 'collections.general.clear_all' | t }}</a><button class="btn btn--accent btn--block" data-close-layer>{{ 'collections.general.apply' | t }}</button></div>
+</aside>
+{%- endpaginate -%}
+
+{% schema %}
+{ "name": "Collection", "settings": [] }
+{% endschema %}

@@ -1,0 +1,19 @@
+{%- comment -%} Mobile bottom navigation: Home, Search, Categories, Cart, Account. {%- endcomment -%}
+<nav class="bottom-nav" aria-label="Mobile navigation">
+  <a href="{{ routes.root_url }}" {% if template.name == 'index' %}class="is-active" aria-current="page"{% endif %}>
+    {% render 'icon', name: 'home', size: 20 %}<span>Home</span>
+  </a>
+  <a href="#mobile-menu" data-open-layer="mobile-menu" role="button">
+    {% render 'icon', name: 'search', size: 20 %}<span>Search</span>
+  </a>
+  <a href="{{ routes.collections_url }}" {% if template.name == 'list-collections' %}class="is-active"{% endif %}>
+    {% render 'icon', name: 'menu', size: 20 %}<span>Shop</span>
+  </a>
+  <a href="{% if settings.cart_type == 'page' %}{{ routes.cart_url }}{% else %}#cart-drawer{% endif %}" {% if settings.cart_type == 'drawer' %}data-open-layer="cart-drawer" role="button"{% endif %} style="position:relative">
+    {% render 'icon', name: 'cart', size: 20 %}<span>Cart</span>
+    <span class="cart-count" data-cart-count {% if cart.item_count == 0 %}hidden{% endif %} style="top:2px;right:18px">{{ cart.item_count }}</span>
+  </a>
+  <a href="{{ routes.account_url }}">
+    {% render 'icon', name: 'user', size: 20 %}<span>Account</span>
+  </a>
+</nav>

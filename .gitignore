@@ -1,0 +1,15 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+.idea/
+.vscode/
+
+# Shopify CLI
+.shopify/
+*.zip
+
+# Node (if tooling added later)
+node_modules/
+npm-debug.log*

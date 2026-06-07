@@ -1,0 +1,38 @@
+{%- comment -%}
+  Renders Shopify storefront filters (Search & Discovery app).
+  Filters available depend on what the store owner enables in
+  Settings → Search & discovery → Filters (Price, Brand/Vendor, Product type,
+  Availability, plus any variant/metafield filters like Condition, Color,
+  Storage, RAM, Screen size, Compatibility).
+{%- endcomment -%}
+<form method="get" id="facet-form{% if mobile %}-m{% endif %}">
+  {%- if collection.sort_by != blank -%}<input type="hidden" name="sort_by" value="{{ collection.sort_by }}">{%- endif -%}
+  {%- for filter in collection.filters -%}
+    <div class="filter-group">
+      <button type="button" class="filter-group__btn" data-filter-toggle aria-expanded="true">{{ filter.label }} {% render 'icon', name: 'chevron-down', size: 16 %}</button>
+      <div class="filter-group__body">
+        {%- case filter.type -%}
+          {%- when 'price_range' -%}
+            <div class="input-group">
+              <input class="input btn--sm" type="number" name="{{ filter.min_value.param_name }}" placeholder="Min" value="{{ filter.min_value.value }}" min="0" max="{{ filter.range_max | money_without_currency | replace: ',', '' }}" inputmode="decimal" aria-label="Minimum price">
+              <input class="input btn--sm" type="number" name="{{ filter.max_value.param_name }}" placeholder="Max" value="{{ filter.max_value.value }}" min="0" max="{{ filter.range_max | money_without_currency | replace: ',', '' }}" inputmode="decimal" aria-label="Maximum price">
+            </div>
+            <button type="submit" class="btn btn--outline btn--sm" style="margin-top:8px">Apply price</button>
+          {%- else -%}
+            {%- for value in filter.values -%}
+              <label class="filter-opt">
+                <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}" {% if value.active %}checked{% endif %} {% if value.count == 0 and value.active == false %}disabled{% endif %} onchange="this.form.submit()">
+                <span>{{ value.label }}{% if value.count > 0 %} <span class="text-faint">({{ value.count }})</span>{% endif %}</span>
+              </label>
+            {%- endfor -%}
+        {%- endcase -%}
+      </div>
+    </div>
+  {%- else -%}
+    <div class="text-muted" style="font-size:.85rem;padding:8px 0">
+      <p>No filters configured yet.</p>
+      <p style="margin-top:8px">Store owner: enable filters in <strong>Settings → Search &amp; discovery → Filters</strong> (Price, Brand, Type, Availability, Condition, Color, Storage, RAM, Screen size, Compatibility).</p>
+    </div>
+  {%- endfor -%}
+  <noscript><button type="submit" class="btn btn--accent btn--sm btn--block" style="margin-top:12px">Apply filters</button></noscript>
+</form>

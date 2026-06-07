@@ -1,0 +1,61 @@
+{%- comment -%} Cart drawer. Re-rendered by global.js via ?section_id=cart-drawer. {%- endcomment -%}
+<div class="drawer-backdrop" data-backdrop></div>
+<aside class="drawer" id="cart-drawer" aria-hidden="true" aria-label="{{ 'cart.general.title' | t }}">
+  <div class="drawer__head">
+    <span class="drawer__title">{{ 'cart.general.title' | t }}</span>
+    <button type="button" class="drawer__close" data-close-layer aria-label="{{ 'general.accessibility.close' | t }}">{% render 'icon', name: 'close', size: 20 %}</button>
+  </div>
+
+  <div data-cart-drawer-content style="display:flex;flex-direction:column;flex:1;overflow:hidden">
+    {%- if cart.item_count > 0 -%}
+      <div class="drawer__body">
+        {%- for item in cart.items -%}
+          <div class="cart-line" data-line="{{ item.key }}">
+            <img class="cart-line__media" src="{{ item.image | image_url: width: 128 }}" alt="{{ item.title | escape }}" width="64" height="64" loading="lazy">
+            <div>
+              <a href="{{ item.url }}" class="cart-line__title">{{ item.product.title }}</a>
+              {%- unless item.variant.title contains 'Default' -%}<div class="cart-line__variant">{{ item.variant.title }}</div>{%- endunless -%}
+              <div style="margin-top:8px;display:flex;align-items:center;gap:12px">
+                <div class="qty">
+                  <button type="button" data-qty-change="-1" aria-label="Decrease quantity">{% render 'icon', name: 'minus', size: 14 %}</button>
+                  <input type="text" value="{{ item.quantity }}" readonly aria-label="Quantity">
+                  <button type="button" data-qty-change="1" aria-label="Increase quantity">{% render 'icon', name: 'plus', size: 14 %}</button>
+                </div>
+                <button type="button" data-line-remove class="btn--ghost" style="font-size:.8rem;color:var(--text-muted)">{{ 'cart.general.remove' | t }}</button>
+              </div>
+            </div>
+            <div style="text-align:right;font-weight:650;font-size:.9rem">{{ item.final_line_price | money }}</div>
+          </div>
+        {%- endfor -%}
+      </div>
+      <div class="drawer__foot">
+        <div class="cart-trust">
+          <span>{% render 'icon', name: 'lock', size: 15 %} Secure</span>
+          <span>{% render 'icon', name: 'truck', size: 15 %} Fast shipping</span>
+          <span>{% render 'icon', name: 'rotate', size: 15 %} Easy returns</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
+          <span style="font-weight:650">{{ 'cart.general.subtotal' | t }}</span>
+          <span style="font-weight:700;font-size:1.15rem">{{ cart.total_price | money }}</span>
+        </div>
+        <p class="text-muted" style="font-size:.8rem;margin-bottom:12px">{{ 'cart.general.taxes_note' | t }}</p>
+        <form action="{{ routes.cart_url }}" method="post">
+          <button type="submit" name="checkout" class="btn btn--accent btn--lg btn--block">{{ 'cart.general.checkout' | t }}</button>
+        </form>
+        <button type="button" class="btn btn--ghost btn--block" data-close-layer style="margin-top:8px">{{ 'cart.general.continue' | t }}</button>
+      </div>
+    {%- else -%}
+      <div class="drawer__body" style="display:grid;place-items:center;text-align:center">
+        <div>
+          {% render 'icon', name: 'cart', size: 40 %}
+          <p style="margin:14px 0 18px" class="text-muted">{{ 'cart.general.empty' | t }}</p>
+          <a href="{{ routes.all_products_collection_url }}" class="btn btn--accent" data-close-layer>Shop now</a>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</aside>
+
+{% schema %}
+{ "name": "Cart drawer", "settings": [] }
+{% endschema %}

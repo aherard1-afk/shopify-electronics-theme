@@ -1,0 +1,34 @@
+{%- comment -%} Credibility band. Use non-numeric claims if real numbers aren't available. {%- endcomment -%}
+<section class="section section--tight">
+  <div class="page-width">
+    <div class="stats">
+      <div class="stats__grid">
+        {%- for block in section.blocks -%}
+          <div {{ block.shopify_attributes }}>
+            <div class="stat__num">{{ block.settings.value }}</div>
+            <div class="stat__label">{{ block.settings.label }}</div>
+          </div>
+        {%- else -%}
+          <div><div class="stat__num">Secure</div><div class="stat__label">Encrypted orders</div></div>
+          <div><div class="stat__num">Fast</div><div class="stat__label">Shipping on select items</div></div>
+          <div><div class="stat__num">Expert</div><div class="stat__label">Support you can reach</div></div>
+          <div><div class="stat__num">Backed</div><div class="stat__label">Warranty support</div></div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Stats band",
+  "max_blocks": 4,
+  "blocks": [
+    { "type": "stat", "name": "Stat", "settings": [
+      { "type": "text", "id": "value", "label": "Value", "default": "Secure" },
+      { "type": "text", "id": "label", "label": "Label", "default": "Encrypted orders" }
+    ] }
+  ],
+  "presets": [ { "name": "Stats band", "blocks": [ { "type": "stat" }, { "type": "stat", "settings": { "value": "Fast", "label": "Shipping on select items" } }, { "type": "stat", "settings": { "value": "Expert", "label": "Support you can reach" } }, { "type": "stat", "settings": { "value": "Backed", "label": "Warranty support" } } ] } ]
+}
+{% endschema %}
