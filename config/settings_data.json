@@ -1,7 +1,7 @@
 {
   "current": {
-    "logo_text": "NORTHWIRE",
-    "brand_mission": "Trusted electronics for work, home, and everything in between — curated, supported, and shipped with care.",
+    "logo_text": "EMPORX",
+    "brand_mission": "Emporx delivers trusted electronics for work, home, and everything in between — curated, supported, and shipped with care.",
     "accent_color": "#3a6ea5",
     "accent_color_hover": "#2f5a87",
     "respect_os_theme": false,
@@ -13,11 +13,13 @@
     "show_quick_view": true,
     "cart_type": "drawer",
     "cart_reassurance": "<p>Secure checkout. Encrypted payment. Easy returns.</p>",
-    "support_email": "support@example.com",
-    "support_hours": "Mon–Fri, 9am–6pm"
+    "support_email": "Alvaro.herard@emporx.com",
+    "support_phone": "(786) 836-1114",
+    "support_hours": "Mon–Fri, 9am–6pm",
+    "social_tiktok": "https://www.tiktok.com/@emporx45"
   },
   "presets": {
-    "Northwire Electronics": {
+    "Emporx Electronics": {
       "accent_color": "#3a6ea5",
       "accent_color_hover": "#2f5a87"
     }

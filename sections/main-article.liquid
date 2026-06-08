@@ -4,7 +4,7 @@
     <nav class="text-muted" style="font-size:.8rem;margin-bottom:16px"><a href="{{ blog.url }}">{{ blog.title }}</a> / <span>{{ article.title }}</span></nav>
     <span class="eyebrow">{{ article.published_at | date: '%B %d, %Y' }}{% if article.author != blank %} · {{ article.author }}{% endif %}</span>
     <h1 style="margin:8px 0 20px">{{ article.title }}</h1>
-    {%- if article.image -%}<img src="{{ article.image | image_url: width: 1200 }}" alt="{{ article.title | escape }}" style="border-radius:var(--radius-lg);margin-bottom:28px;width:100%" width="760" loading="eager">{%- endif -%}
+    {%- if article.image -%}<img src="{{ article.image | image_url: width: 1200 }}" alt="{{ article.title | escape }}" style="border-radius:var(--radius-lg);margin-bottom:28px;width:100%;height:auto" width="760" height="500" loading="eager">{%- endif -%}
     <div class="rte">{{ article.content }}</div>
     <div style="margin-top:36px"><a href="{{ blog.url }}" class="btn btn--outline">{% render 'icon', name: 'chevron-left', size: 14 %} Back to {{ blog.title }}</a></div>
   </div>

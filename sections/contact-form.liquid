@@ -30,7 +30,7 @@
           <p style="display:flex;align-items:center;gap:10px;margin-bottom:12px">{% render 'icon', name: 'mail', size: 18 %} <a href="mailto:{{ settings.support_email }}" style="color:var(--accent)">{{ settings.support_email }}</a></p>
           {%- if settings.support_phone != blank -%}<p style="display:flex;align-items:center;gap:10px;margin-bottom:12px">{% render 'icon', name: 'phone', size: 18 %} {{ settings.support_phone }}</p>{%- endif -%}
           <p style="display:flex;align-items:center;gap:10px;margin-bottom:12px">{% render 'icon', name: 'headset', size: 18 %} {{ settings.support_hours }}</p>
-          {%- if section.settings.address != blank -%}<p style="display:flex;align-items:flex-start;gap:10px">{% render 'icon', name: 'home', size: 18 %} <span>{{ section.settings.address }}</span></p>{%- endif -%}
+          {%- if section.settings.address != blank -%}<p style="display:flex;align-items:flex-start;gap:10px">{% render 'icon', name: 'home', size: 18 %} <span>{{ section.settings.address | newline_to_br }}</span></p>{%- endif -%}
           <hr>
           <p class="text-muted" style="font-size:.875rem">Looking for order help? <a href="{{ routes.account_url }}" style="color:var(--accent)">Track your order</a> or visit our <a href="/pages/faqs" style="color:var(--accent)">FAQs</a>.</p>
         </div>

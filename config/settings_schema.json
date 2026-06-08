@@ -1,7 +1,7 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Northwire Electronics",
+    "theme_name": "Emporx Electronics",
     "theme_version": "1.0.0",
     "theme_author": "Custom build",
     "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
@@ -11,7 +11,7 @@
     "name": "Brand",
     "settings": [
       { "type": "image_picker", "id": "logo", "label": "Logo image (optional)" },
-      { "type": "text", "id": "logo_text", "label": "Logo text", "default": "NORTHWIRE" },
+      { "type": "text", "id": "logo_text", "label": "Logo text", "default": "EMPORX" },
       { "type": "image_picker", "id": "favicon", "label": "Favicon" },
       { "type": "textarea", "id": "brand_mission", "label": "Brand mission (footer)", "default": "Trusted electronics for work, home, and everything in between — curated, supported, and shipped with care." }
     ]
