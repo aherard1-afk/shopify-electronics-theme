@@ -9,7 +9,7 @@
       "s5": { "type": "feature", "settings": { "icon": "truck", "title": "Order tracking", "text": "<p>Track every order from dispatch to doorstep, with help if anything stalls.</p>" } },
       "s6": { "type": "feature", "settings": { "icon": "lock", "title": "Secure shopping", "text": "<p>Encrypted checkout and trusted payment options on every order.</p>" } }
     }, "block_order": ["s1","s2","s3","s4","s5","s6"] },
-    "cta": { "type": "rich-text", "settings": { "heading": "Have a question first?", "content": "<p>Our team is happy to help you choose, set up, or support your tech.</p>", "cta_label": "Contact support", "cta_link": "shopify://pages/contact", "width": 760, "tight": true } }
+    "cta": { "type": "rich-text", "settings": { "heading": "Have a question first?", "content": "<p>Our team is happy to help you choose, set up, or support your tech.</p>", "cta_label": "Contact support", "cta_link": "/pages/contact", "width": 760, "tight": true } }
   },
   "order": ["header", "services", "cta"]
 }

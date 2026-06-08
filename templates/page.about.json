@@ -7,7 +7,7 @@
       "f2": { "type": "feature", "settings": { "icon": "shield", "title": "Products we trust", "text": "<p>We stock dependable tech and stand behind what we sell.</p>" } },
       "f3": { "type": "feature", "settings": { "icon": "headset", "title": "Support that shows up", "text": "<p>Reach real specialists before and after your purchase.</p>" } }
     }, "block_order": ["f1","f2","f3"] },
-    "cta": { "type": "rich-text", "settings": { "heading": "Ready to shop?", "content": "<p>Explore our full range or talk to our team about the right setup for you.</p>", "cta_label": "Shop all products", "cta_link": "shopify://collections/all", "width": 760, "tight": true } }
+    "cta": { "type": "rich-text", "settings": { "heading": "Ready to shop?", "content": "<p>Explore our full range or talk to our team about the right setup for you.</p>", "cta_label": "Shop all products", "cta_link": "/collections/all", "width": 760, "tight": true } }
   },
   "order": ["header", "intro", "values", "cta"]
 }
