@@ -60,7 +60,7 @@
     <div class="product-card__actions">
       {%- if product.available -%}
         {%- if product.variants.size == 1 -%}
-          <form method="post" action="/cart/add" data-add-to-cart data-no-drawer>
+          <form method="post" action="{{ routes.cart_add_url }}" data-add-to-cart data-no-drawer>
             <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
             <button type="submit" class="btn btn--accent btn--sm btn--block" data-atc-btn>
               <span data-btn-label>{{ 'products.product.add_to_cart' | t }}</span>
