@@ -1,0 +1,10 @@
+Title,Handle,Command,Published,Template Suffix,Body HTML
+About Us,about-us,MERGE,TRUE,about,
+Our Services,services,MERGE,TRUE,services,
+Contact,contact,MERGE,TRUE,contact,
+FAQs,faqs,MERGE,TRUE,faq,
+Shipping Policy,shipping-policy,MERGE,TRUE,shipping,
+Returns & Refunds,returns-refunds,MERGE,TRUE,returns,
+Warranty & Product Support,warranty,MERGE,TRUE,warranty,
+Privacy Policy,privacy-policy,MERGE,TRUE,privacy,
+Terms of Service,terms-of-service,MERGE,TRUE,terms,
