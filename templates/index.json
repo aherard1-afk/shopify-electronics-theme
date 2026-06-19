@@ -48,7 +48,7 @@
       "st3": { "type": "stat", "settings": { "value": "Expert", "label": "Support you can reach" } },
       "st4": { "type": "stat", "settings": { "value": "Backed", "label": "Warranty support" } }
     }, "block_order": ["st1","st2","st3","st4"], "settings": {} },
-    "newsletter": { "type": "newsletter", "settings": { "eyebrow": "Stay informed", "heading": "Get buying guides, restock alerts, and exclusive tech offers.", "text": "Useful, occasional emails — no spam. Unsubscribe anytime." } },
+    "newsletter": { "type": "newsletter", "settings": { "eyebrow": "Stay informed", "heading": "Get restock alerts and exclusive tech offers.", "text": "Useful, occasional emails — no spam. Unsubscribe anytime." } },
     "faq": { "type": "faq", "settings": { "eyebrow": "Answers", "heading": "Frequently asked questions", "show_link": true, "link": "/pages/faqs" } }
   },
   "order": ["hero","trust","best_sellers","categories","editorial","paths","values","reviews","stats","newsletter","faq"]

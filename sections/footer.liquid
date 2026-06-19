@@ -41,14 +41,13 @@
           <a href="/pages/about-us">About us</a>
           <a href="/pages/our-services">Our services</a>
           <a href="/pages/contact">Contact</a>
-          <a href="/blogs/buying-guides">Buying guides</a>
         {%- endif -%}
       </div>
     </div>
 
     {%- if section.settings.show_footer_newsletter -%}
       <div style="border-top:1px solid var(--border);padding-block:24px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap">
-        <div><strong>Stay in the loop</strong><p class="text-muted" style="font-size:.875rem">Buying guides, restock alerts, and exclusive tech offers.</p></div>
+        <div><strong>Stay in the loop</strong><p class="text-muted" style="font-size:.875rem">Restock alerts and exclusive tech offers.</p></div>
         {%- form 'customer', class: 'newsletter__form', style: 'margin:0;max-width:420px' -%}
           <input type="hidden" name="contact[tags]" value="newsletter">
           <input class="input" type="email" name="contact[email]" placeholder="{{ 'general.newsletter.placeholder' | t }}" aria-label="{{ 'general.newsletter.label' | t }}" required>

@@ -64,10 +64,7 @@ Product Reviews, or Yotpo**. Install one, then either paste its widget into the
 Testimonials section ("Review app embed") or let ratings populate automatically. No fake
 reviews are shipped.
 
-## 7. Blog / buying guides (optional)
-Create a blog with handle `buying-guides` (Content → Blog posts) — the footer links to it.
-
-## 8. Final pre-launch pass
+## 7. Final pre-launch pass
 - [ ] All `[BRACKETED PLACEHOLDERS]` filled in
 - [ ] Logo + favicon uploaded
 - [ ] Support email/phone/hours + social links set
