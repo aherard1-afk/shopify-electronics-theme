@@ -6,7 +6,7 @@
         "specs": { "type": "tab", "settings": { "title": "Specifications", "content": "<p>Add product specifications here, or connect them to a product metafield (toggle \"Pull from a metafield\" in this block).</p>", "use_metafield": false } },
         "shipping": { "type": "tab", "settings": { "title": "Shipping", "content": "<p>Estimated delivery and shipping costs are shown at checkout. See our <a href=\"/pages/shipping-policy\">Shipping Policy</a> for full details.</p>" } },
         "returns": { "type": "tab", "settings": { "title": "Returns", "content": "<p>Not the right fit? See our <a href=\"/pages/returns-refunds\">Returns &amp; Refunds</a> policy for the return window and steps.</p>" } },
-        "warranty": { "type": "tab", "settings": { "title": "Warranty", "content": "<p>Warranty coverage and product support details are on our <a href=\"/pages/warranty\">Warranty page</a>.</p>" } },
+        "warranty": { "type": "tab", "settings": { "title": "Warranty", "content": "<p>Warranty coverage and product support details are on our <a href=\"/pages/warranty-product-support\">Warranty page</a>.</p>" } },
         "faqs": { "type": "tab", "settings": { "title": "FAQs", "content": "<p>Common questions are answered on our <a href=\"/pages/faqs\">FAQ page</a>.</p>" } }
       },
       "block_order": ["specs","shipping","returns","warranty","faqs"],
