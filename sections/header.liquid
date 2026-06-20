@@ -16,10 +16,14 @@
 
       <form action="{{ routes.search_url }}" method="get" class="header__search search-form" role="search">
         <input type="hidden" name="type" value="product">
-        {%- if section.settings.category_search and linklists.main-menu.links.size > 0 -%}
-          <select class="search-form__cat" name="q_type" aria-label="Category" disabled title="Category-aware search">
-            <option>All categories</option>
-            {%- for link in linklists.main-menu.links limit: 6 -%}<option>{{ link.title }}</option>{%- endfor -%}
+        {%- if section.settings.category_search and collections.size > 0 -%}
+          <select class="search-form__cat" aria-label="Shop by category" title="Jump to a category" onchange="if(this.value){window.location.href=this.value}">
+            <option value="{{ routes.all_products_collection_url }}">All categories</option>
+            {%- for link in linklists.main-menu.links -%}
+              {%- if link.links.size > 0 -%}
+                {%- for child in link.links -%}<option value="{{ child.url }}">{{ child.title }}</option>{%- endfor -%}
+              {%- endif -%}
+            {%- endfor -%}
           </select>
         {%- endif -%}
         <input class="input" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.label' | t }}">
