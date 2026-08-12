@@ -23,7 +23,23 @@
     </script>
 
     <title>{{ page_title }}{% if current_tags %} &ndash; {{ current_tags | join: ', ' }}{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}</title>
-    {%- if page_description -%}<meta name="description" content="{{ page_description | escape }}">{%- endif -%}
+    {%- liquid
+  assign meta_desc = page_description
+  if meta_desc == blank and template.name == 'index'
+    assign meta_desc = 'Emporx — trusted electronics for work, home, and everything in between. Audio, charging, smart home, wearables and more, with expert support, secure checkout and easy returns.'
+  endif
+  assign og_img = page_image | default: settings.logo
+-%}
+    {%- if meta_desc != blank -%}<meta name="description" content="{{ meta_desc | escape }}">{%- endif -%}
+    <meta property="og:site_name" content="{{ shop.name | escape }}">
+    <meta property="og:type" content="{% if template.name == 'product' %}product{% else %}website{% endif %}">
+    <meta property="og:title" content="{{ page_title | escape }}">
+    {%- if meta_desc != blank -%}<meta property="og:description" content="{{ meta_desc | escape }}">{%- endif -%}
+    <meta property="og:url" content="{{ canonical_url }}">
+    {%- if og_img != blank -%}<meta property="og:image" content="https:{{ og_img | image_url: width: 1200 }}">{%- endif -%}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ page_title | escape }}">
+    {%- if meta_desc != blank -%}<meta name="twitter:description" content="{{ meta_desc | escape }}">{%- endif -%}
 
     {{ content_for_header }}
 

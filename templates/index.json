@@ -14,22 +14,21 @@
       "t3": { "type": "point", "settings": { "icon": "headset", "title": "Expert support", "text": "Real specialists" } },
       "t4": { "type": "point", "settings": { "icon": "rotate", "title": "Easy returns", "text": "Hassle-free process" } }
     }, "block_order": ["t1","t2","t3","t4"], "settings": {} },
-    "best_sellers": { "type": "featured-products", "settings": { "anchor_id": "best-sellers", "eyebrow": "Customer favourites", "heading": "Best sellers", "subheading": "The tech our customers reach for most.", "count": 8, "layout": "carousel" } },
+    "best_sellers": { "type": "featured-products", "settings": { "anchor_id": "best-sellers", "collection": "all", "eyebrow": "Customer favourites", "heading": "Best sellers", "subheading": "The tech our customers reach for most.", "count": 8, "layout": "carousel" } },
     "categories": { "type": "category-grid", "blocks": {
-      "c1": { "type": "category", "settings": { "kicker": "Category", "title": "Audio" } },
-      "c2": { "type": "category", "settings": { "kicker": "Category", "title": "Phones" } },
-      "c3": { "type": "category", "settings": { "kicker": "Category", "title": "Laptops" } },
-      "c4": { "type": "category", "settings": { "kicker": "Category", "title": "Smart Home" } },
-      "c5": { "type": "category", "settings": { "kicker": "Category", "title": "Smart Watches" } },
-      "c6": { "type": "category", "settings": { "kicker": "Category", "title": "Monitors" } },
-      "c7": { "type": "category", "settings": { "kicker": "Category", "title": "Accessories" } },
-      "c8": { "type": "category", "settings": { "kicker": "Category", "title": "Gaming" } }
-    }, "block_order": ["c1","c2","c3","c4","c5","c6","c7","c8"], "settings": { "eyebrow": "Our range", "heading": "Shop our range" } },
-    "editorial": { "type": "editorial-split", "settings": { "eyebrow": "Everyday tech", "heading": "Tech that fits the way you live.", "text": "From the home office to the living room, we help you choose dependable electronics that simply work — backed by people who actually know them.", "cta_label": "Shop smart home", "cta_link": "/collections/all", "reverse": false } },
+      "c1": { "type": "category", "settings": { "kicker": "Category", "title": "Audio", "collection": "audio", "link": "/collections/audio" } },
+      "c2": { "type": "category", "settings": { "kicker": "Category", "title": "Charging & Power", "collection": "charging-power", "link": "/collections/charging-power" } },
+      "c3": { "type": "category", "settings": { "kicker": "Category", "title": "Smart Home", "collection": "smart-home", "link": "/collections/smart-home" } },
+      "c4": { "type": "category", "settings": { "kicker": "Category", "title": "Wearables", "collection": "wearables", "link": "/collections/wearables" } },
+      "c5": { "type": "category", "settings": { "kicker": "Category", "title": "Gaming", "collection": "gaming", "link": "/collections/gaming" } },
+      "c6": { "type": "category", "settings": { "kicker": "Category", "title": "Computer & Laptop", "collection": "computer-laptop", "link": "/collections/computer-laptop" } },
+      "c7": { "type": "category", "settings": { "kicker": "Category", "title": "Phone Accessories", "collection": "phone-accessories", "link": "/collections/phone-accessories" } }
+    }, "block_order": ["c1","c2","c3","c4","c5","c6","c7"], "settings": { "eyebrow": "Our range", "heading": "Shop our range" } },
+    "editorial": { "type": "editorial-split", "settings": { "eyebrow": "Everyday tech", "heading": "Tech that fits the way you live.", "text": "From the home office to the living room, we help you choose dependable electronics that simply work — backed by people who actually know them.", "cta_label": "Shop smart home", "cta_link": "/collections/smart-home", "reverse": false } },
     "paths": { "type": "buying-paths", "blocks": {
-      "p1": { "type": "path", "settings": { "title": "Work from home", "text": "Everything you need for a focused, comfortable setup.", "cta": "Explore" } },
-      "p2": { "type": "path", "settings": { "title": "Everyday essentials", "text": "Dependable tech for daily life.", "cta": "Explore" } },
-      "p3": { "type": "path", "settings": { "title": "Gaming & entertainment", "text": "Level up your screen, sound, and play.", "cta": "Explore" } }
+      "p1": { "type": "path", "settings": { "title": "Work from home", "text": "Everything you need for a focused, comfortable setup.", "cta": "Explore", "link": "/collections/computer-laptop" } },
+      "p2": { "type": "path", "settings": { "title": "Everyday essentials", "text": "Dependable tech for daily life.", "cta": "Explore", "link": "/collections/charging-power" } },
+      "p3": { "type": "path", "settings": { "title": "Gaming & entertainment", "text": "Level up your screen, sound, and play.", "cta": "Explore", "link": "/collections/gaming" } }
     }, "block_order": ["p1","p2","p3"], "settings": { "eyebrow": "Shop by need", "heading": "Find your setup" } },
     "values": { "type": "value-props", "blocks": {
       "v1": { "type": "prop", "settings": { "icon": "check", "title": "Vetted quality", "text": "We stock dependable products and stand behind what we sell." } },
@@ -38,9 +37,9 @@
       "v4": { "type": "prop", "settings": { "icon": "package", "title": "Easy setup", "text": "Compatibility guidance and clear specs so it works out of the box." } }
     }, "block_order": ["v1","v2","v3","v4"], "settings": { "eyebrow": "Confidence built in", "heading": "Why shop with us" } },
     "reviews": { "type": "testimonials", "blocks": {
-      "r1": { "type": "review", "settings": { "stars": 5, "quote": "Smooth ordering, arrived quickly, and support actually helped me pick the right model.", "name": "Sample Customer", "location": "", "verified": false } },
-      "r2": { "type": "review", "settings": { "stars": 5, "quote": "Great selection and honest advice. Felt like buying from people who know electronics.", "name": "Sample Customer", "location": "", "verified": false } },
-      "r3": { "type": "review", "settings": { "stars": 4, "quote": "Fair prices and the warranty info was clear up front. Will shop again.", "name": "Sample Customer", "location": "", "verified": false } }
+      "r1": { "type": "review", "settings": { "stars": 5, "quote": "Smooth ordering, arrived quickly, and support actually helped me pick the right model.", "name": "Sample Customer", "verified": false } },
+      "r2": { "type": "review", "settings": { "stars": 5, "quote": "Great selection and honest advice. Felt like buying from people who know electronics.", "name": "Sample Customer", "verified": false } },
+      "r3": { "type": "review", "settings": { "stars": 4, "quote": "Fair prices and the warranty info was clear up front. Will shop again.", "name": "Sample Customer", "verified": false } }
     }, "block_order": ["r1","r2","r3"], "settings": { "eyebrow": "Customer experiences", "heading": "What our customers say", "subheading": "Real feedback from people who shop with us.", "placeholder_notice": true } },
     "stats": { "type": "stats-band", "blocks": {
       "st1": { "type": "stat", "settings": { "value": "Secure", "label": "Encrypted orders" } },
