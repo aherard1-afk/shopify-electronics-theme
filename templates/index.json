@@ -98,62 +98,62 @@
           "settings": {
             "kicker": "Category",
             "title": "Audio",
-            "collection": "audio"
+            "collection": "audio",
+            "link": "/collections/audio"
           }
         },
         "c2": {
           "type": "category",
           "settings": {
             "kicker": "Category",
-            "title": "Phones",
-            "collection": "charging-power"
+            "title": "Charging & Power",
+            "collection": "charging-power",
+            "link": "/collections/charging-power"
           }
         },
         "c3": {
           "type": "category",
           "settings": {
             "kicker": "Category",
-            "title": "Laptops",
-            "collection": "smart-home"
+            "title": "Smart Home",
+            "collection": "smart-home",
+            "link": "/collections/smart-home"
           }
         },
         "c4": {
           "type": "category",
           "settings": {
             "kicker": "Category",
-            "title": "Smart Home",
-            "collection": "wearables"
+            "title": "Wearables",
+            "collection": "wearables",
+            "link": "/collections/wearables"
           }
         },
         "c5": {
           "type": "category",
           "settings": {
             "kicker": "Category",
-            "title": "Smart Watches",
-            "collection": "gaming"
+            "title": "Gaming",
+            "collection": "gaming",
+            "link": "/collections/gaming"
           }
         },
         "c6": {
           "type": "category",
           "settings": {
             "kicker": "Category",
-            "title": "Monitors",
-            "collection": "computer-laptop"
+            "title": "Computer & Laptop",
+            "collection": "computer-laptop",
+            "link": "/collections/computer-laptop"
           }
         },
         "c7": {
           "type": "category",
           "settings": {
             "kicker": "Category",
-            "title": "Accessories",
-            "collection": "phone-accessories"
-          }
-        },
-        "c8": {
-          "type": "category",
-          "settings": {
-            "kicker": "Category",
-            "title": "Gaming"
+            "title": "Phone Accessories",
+            "collection": "phone-accessories",
+            "link": "/collections/phone-accessories"
           }
         }
       },
@@ -164,8 +164,7 @@
         "c4",
         "c5",
         "c6",
-        "c7",
-        "c8"
+        "c7"
       ],
       "settings": {
         "eyebrow": "Our range",
