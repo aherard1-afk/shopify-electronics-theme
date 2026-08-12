@@ -85,8 +85,9 @@
         "eyebrow": "Customer favourites",
         "heading": "Best sellers",
         "subheading": "The tech our customers reach for most.",
-        "count": 10,
-        "layout": "carousel"
+        "count": 8,
+        "layout": "carousel",
+        "collection": "all"
       }
     },
     "categories": {
@@ -97,55 +98,62 @@
           "settings": {
             "kicker": "Category",
             "title": "Audio",
-            "link": "/collections/audio"
+            "collection": "audio"
           }
         },
         "c2": {
           "type": "category",
           "settings": {
             "kicker": "Category",
-            "title": "Charging & Power",
-            "link": "/collections/charging-power"
+            "title": "Phones",
+            "collection": "charging-power"
           }
         },
         "c3": {
           "type": "category",
           "settings": {
             "kicker": "Category",
-            "title": "Smart Home",
-            "link": "/collections/smart-home"
+            "title": "Laptops",
+            "collection": "smart-home"
           }
         },
         "c4": {
           "type": "category",
           "settings": {
             "kicker": "Category",
-            "title": "Wearables",
-            "link": "/collections/wearables"
+            "title": "Smart Home",
+            "collection": "wearables"
           }
         },
         "c5": {
           "type": "category",
           "settings": {
             "kicker": "Category",
-            "title": "Gaming",
-            "link": "/collections/gaming"
+            "title": "Smart Watches",
+            "collection": "gaming"
           }
         },
         "c6": {
           "type": "category",
           "settings": {
             "kicker": "Category",
-            "title": "Computer & Laptop",
-            "link": "/collections/computer-laptop"
+            "title": "Monitors",
+            "collection": "computer-laptop"
           }
         },
         "c7": {
           "type": "category",
           "settings": {
             "kicker": "Category",
-            "title": "Phone Accessories",
-            "link": "/collections/phone-accessories"
+            "title": "Accessories",
+            "collection": "phone-accessories"
+          }
+        },
+        "c8": {
+          "type": "category",
+          "settings": {
+            "kicker": "Category",
+            "title": "Gaming"
           }
         }
       },
@@ -156,7 +164,8 @@
         "c4",
         "c5",
         "c6",
-        "c7"
+        "c7",
+        "c8"
       ],
       "settings": {
         "eyebrow": "Our range",
@@ -170,7 +179,7 @@
         "heading": "Tech that fits the way you live.",
         "text": "From the home office to the living room, we help you choose dependable electronics that simply work — backed by people who actually know them.",
         "cta_label": "Shop smart home",
-        "cta_link": "/collections/smart-home",
+        "cta_link": "/collections/all",
         "reverse": false
       }
     },
@@ -182,8 +191,7 @@
           "settings": {
             "title": "Work from home",
             "text": "Everything you need for a focused, comfortable setup.",
-            "cta": "Explore",
-            "link": "/collections/computer-laptop"
+            "cta": "Explore"
           }
         },
         "p2": {
@@ -191,8 +199,7 @@
           "settings": {
             "title": "Everyday essentials",
             "text": "Dependable tech for daily life.",
-            "cta": "Explore",
-            "link": "/collections/charging-power"
+            "cta": "Explore"
           }
         },
         "p3": {
@@ -200,8 +207,7 @@
           "settings": {
             "title": "Gaming & entertainment",
             "text": "Level up your screen, sound, and play.",
-            "cta": "Explore",
-            "link": "/collections/gaming"
+            "cta": "Explore"
           }
         }
       },
@@ -271,6 +277,7 @@
             "stars": 5,
             "quote": "Smooth ordering, arrived quickly, and support actually helped me pick the right model.",
             "name": "Sample Customer",
+            "location": "",
             "verified": false
           }
         },
@@ -280,6 +287,7 @@
             "stars": 5,
             "quote": "Great selection and honest advice. Felt like buying from people who know electronics.",
             "name": "Sample Customer",
+            "location": "",
             "verified": false
           }
         },
@@ -289,6 +297,7 @@
             "stars": 4,
             "quote": "Fair prices and the warranty info was clear up front. Will shop again.",
             "name": "Sample Customer",
+            "location": "",
             "verified": false
           }
         }
