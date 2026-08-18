@@ -85,9 +85,9 @@
         "eyebrow": "Customer favourites",
         "heading": "Best sellers",
         "subheading": "The tech our customers reach for most.",
-        "count": 8,
+        "count": 10,
         "layout": "carousel",
-        "collection": "all"
+        "collection": "best-sellers"
       }
     },
     "categories": {
