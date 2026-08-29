@@ -299,6 +299,19 @@
     var match = variants.find(function (v) { return v.options.every(function (o, idx) { return o === chosen[idx]; }); });
     if (match && idInput) {
       idInput.value = match.id;
+      /* Swap gallery image to the selected variant's image when it has one. */
+      if (match.img) {
+        var gal = form.closest("[data-product-form-wrap]") || document;
+        var mainImg = $("[data-gallery-main]", gal) || $("[data-gallery-main]");
+        if (mainImg) {
+          mainImg.src = match.img;
+          $$("[data-gallery-thumb]", gal).forEach(function (t) {
+            var f = t.getAttribute("data-full") || "";
+            var same = f.split("?")[0] === match.img.split("?")[0];
+            t.setAttribute("aria-current", same ? "true" : "false");
+          });
+        }
+      }
       var price = $("[data-product-price]", form) || $("[data-product-price]");
       if (price) price.textContent = money(match.price);
       var atc = $("[data-atc-btn]", form);
@@ -355,6 +368,27 @@
     });
   }
 
+  /* ---------- RELATED PRODUCTS (fallback when recommendations not performed) ---------- */
+  function initRelated() {
+    var sec = $("[data-related-fetch]");
+    if (!sec) return;
+    var id = sec.getAttribute("data-related-fetch");
+    var limit = sec.getAttribute("data-related-limit") || 8;
+    var target = $("[data-related-target]", sec);
+    if (!id || !target) return;
+    fetch("/recommendations/products?section_id=related-products&product_id=" + id + "&limit=" + limit)
+      .then(function (r) { return r.ok ? r.text() : ""; })
+      .then(function (html) {
+        if (!html.trim()) { sec.hidden = true; return; }
+        var doc = new DOMParser().parseFromString(html, "text/html");
+        var cards = doc.querySelectorAll(".product-card");
+        if (!cards.length) { sec.hidden = true; return; }
+        target.innerHTML = "";
+        cards.forEach(function (c) { target.appendChild(document.importNode(c, true)); });
+      })
+      .catch(function () { sec.hidden = true; });
+  }
+
   /* ---------- MOBILE FILTER SUBMIT-ON-CHANGE (optional auto) ---------- */
   function initFilterForm() {
     var clearBtns = $$("[data-clear-filters]");
@@ -369,6 +403,6 @@
   document.addEventListener("DOMContentLoaded", function () {
     initTheme(); initStickyHeader(); initLayers(); initAccordions(); initFilterGroups();
     initHero(); initCarousels(); initReveal(); initCart(); initQuickView(); initGallery();
-    initVariants(); initStickyAtc(); initRecentlyViewed(); initFilterForm();
+    initVariants(); initStickyAtc(); initRecentlyViewed(); initRelated(); initFilterForm();
   });
 })();

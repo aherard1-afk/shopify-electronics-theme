@@ -63,7 +63,7 @@
     "name": "Support",
     "settings": [
       { "type": "text", "id": "support_email", "label": "Support email", "default": "support@example.com" },
-      { "type": "text", "id": "support_phone", "label": "Support phone", "default": "" },
+      { "type": "text", "id": "support_phone", "label": "Support phone" },
       { "type": "text", "id": "support_hours", "label": "Support hours", "default": "Mon–Fri, 9am–6pm" }
     ]
   }
