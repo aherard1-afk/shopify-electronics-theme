@@ -310,25 +310,16 @@
     var match = variants.find(function (v) { return v.options.every(function (o, idx) { return o === chosen[idx]; }); });
     if (match && idInput) {
       idInput.value = match.id;
-<<<<<<< HEAD
       /* Swap gallery image to the selected variant's image when it has one. */
-=======
->>>>>>> 8e79e318ba4e7357d372ae8eef960c2ae37f87bb
       if (match.img) {
         var gal = form.closest("[data-product-form-wrap]") || document;
         var mainImg = $("[data-gallery-main]", gal) || $("[data-gallery-main]");
         if (mainImg) {
           mainImg.src = match.img;
-<<<<<<< HEAD
           $$("[data-gallery-thumb]", gal).forEach(function (t) {
             var f = t.getAttribute("data-full") || "";
             var same = f.split("?")[0] === match.img.split("?")[0];
             t.setAttribute("aria-current", same ? "true" : "false");
-=======
-          $("[data-gallery-thumb]", gal).forEach(function (t) {
-            var f = t.getAttribute("data-full") || "";
-            t.setAttribute("aria-current", f.split("?")[0] === match.img.split("?")[0] ? "true" : "false");
->>>>>>> 8e79e318ba4e7357d372ae8eef960c2ae37f87bb
           });
         }
       }
