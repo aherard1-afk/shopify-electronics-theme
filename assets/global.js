@@ -13,6 +13,17 @@
   };
 
   /* ---------- THEME TOGGLE (persisted) ---------- */
+  function __nwThemeGuard() {
+    var root = document.documentElement;
+    function desired() { try { return localStorage.getItem("nw-theme"); } catch (e) { return null; } }
+    function apply() { var d = desired(); if (d && root.getAttribute("data-theme") !== d) { root.setAttribute("data-theme", d); } }
+    apply();
+    try {
+      new MutationObserver(apply).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+    } catch (e) {}
+    window.addEventListener("pageshow", apply);
+    document.addEventListener("visibilitychange", apply);
+  }
   function initTheme() {
     var root = document.documentElement;
     var stored = null;
@@ -399,7 +410,7 @@
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-    initTheme(); initStickyHeader(); initLayers(); initAccordions(); initFilterGroups();
+    initTheme(); __nwThemeGuard(); initStickyHeader(); initLayers(); initAccordions(); initFilterGroups();
     initHero(); initCarousels(); initReveal(); initCart(); initQuickView(); initGallery();
     initVariants(); initStickyAtc(); initRecentlyViewed(); initRelated(); initFilterForm();
   });
