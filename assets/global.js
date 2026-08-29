@@ -299,6 +299,17 @@
     var match = variants.find(function (v) { return v.options.every(function (o, idx) { return o === chosen[idx]; }); });
     if (match && idInput) {
       idInput.value = match.id;
+      if (match.img) {
+        var gal = form.closest("[data-product-form-wrap]") || document;
+        var mainImg = $("[data-gallery-main]", gal) || $("[data-gallery-main]");
+        if (mainImg) {
+          mainImg.src = match.img;
+          $("[data-gallery-thumb]", gal).forEach(function (t) {
+            var f = t.getAttribute("data-full") || "";
+            t.setAttribute("aria-current", f.split("?")[0] === match.img.split("?")[0] ? "true" : "false");
+          });
+        }
+      }
       var price = $("[data-product-price]", form) || $("[data-product-price]");
       if (price) price.textContent = money(match.price);
       var atc = $("[data-atc-btn]", form);
@@ -331,6 +342,27 @@
   }
 
   /* ---------- RECENTLY VIEWED ---------- */
+
+  function initRelated() {
+    var sec = $("[data-related-fetch]");
+    if (!sec) return;
+    var id = sec.getAttribute("data-related-fetch");
+    var limit = sec.getAttribute("data-related-limit") || 8;
+    var target = $("[data-related-target]", sec);
+    if (!id || !target) return;
+    fetch("/recommendations/products?section_id=related-products&product_id=" + id + "&limit=" + limit)
+      .then(function (r) { return r.ok ? r.text() : ""; })
+      .then(function (html) {
+        if (!html.trim()) { sec.hidden = true; return; }
+        var doc = new DOMParser().parseFromString(html, "text/html");
+        var cards = doc.querySelectorAll(".product-card");
+        if (!cards.length) { sec.hidden = true; return; }
+        target.innerHTML = "";
+        cards.forEach(function (c) { target.appendChild(document.importNode(c, true)); });
+      })
+      .catch(function () { sec.hidden = true; });
+  }
+
   function initRecentlyViewed() {
     var KEY = "nw-recent";
     var current = document.body.getAttribute("data-product-handle");
@@ -369,6 +401,6 @@
   document.addEventListener("DOMContentLoaded", function () {
     initTheme(); initStickyHeader(); initLayers(); initAccordions(); initFilterGroups();
     initHero(); initCarousels(); initReveal(); initCart(); initQuickView(); initGallery();
-    initVariants(); initStickyAtc(); initRecentlyViewed(); initFilterForm();
+    initVariants(); initStickyAtc(); initRecentlyViewed(); initRelated(); initFilterForm();
   });
 })();
