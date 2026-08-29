@@ -1,5 +1,5 @@
-{%- comment -%} Recently viewed — populated client-side from localStorage by global.js. {%- endcomment -%}
-<section class="section" data-recent-section>
+{%- comment -%} Recently viewed — self-contained, populated from localStorage. {%- endcomment -%}
+<section class="section" data-recent-section hidden>
   <div class="page-width">
     <div class="section-head"><div class="section-head__titles"><h2>{{ section.settings.heading | default: 'Recently viewed' }}</h2></div></div>
     <div class="carousel" data-carousel data-recently-viewed>
@@ -9,6 +9,35 @@
     </div>
   </div>
 </section>
+<script>
+(function () {
+  var KEY = "nw-recent";
+  var current = {{ product.handle | json }};
+  var list = [];
+  try { list = JSON.parse(localStorage.getItem(KEY) || "[]"); } catch (e) { list = []; }
+  if (current) {
+    list = list.filter(function (h) { return h !== current; });
+    list.unshift(current);
+    list = list.slice(0, 10);
+    try { localStorage.setItem(KEY, JSON.stringify(list)); } catch (e) {}
+  }
+  var sec = document.querySelector("[data-recent-section]");
+  if (!sec) return;
+  var track = sec.querySelector("[data-carousel-track]");
+  var handles = list.filter(function (h) { return h !== current; }).slice(0, 6);
+  if (!handles.length || !track) { sec.hidden = true; return; }
+  Promise.all(handles.map(function (h) {
+    return fetch("/products/" + h + "?section_id=product-card-ajax")
+      .then(function (r) { return r.ok ? r.text() : ""; })
+      .catch(function () { return ""; });
+  })).then(function (parts) {
+    var html = parts.join("");
+    if (!html.trim()) { sec.hidden = true; return; }
+    track.innerHTML = html;
+    if (track.querySelector(".product-card")) { sec.hidden = false; } else { sec.hidden = true; }
+  }).catch(function () { sec.hidden = true; });
+})();
+</script>
 {% schema %}
 {
   "name": "Recently viewed",
