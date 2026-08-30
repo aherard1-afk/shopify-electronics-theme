@@ -356,9 +356,9 @@
     "newsletter": {
       "type": "newsletter",
       "settings": {
-        "eyebrow": "Stay informed",
-        "heading": "Get restock alerts and exclusive tech offers.",
-        "text": "Useful, occasional emails — no spam. Unsubscribe anytime."
+        "eyebrow": "Save on your first order",
+        "heading": "Get 10% off your first order.",
+        "text": "Join for restock alerts and exclusive tech offers. Use code WELCOME10 at checkout — free shipping over $70."
       }
     },
     "faq": {
