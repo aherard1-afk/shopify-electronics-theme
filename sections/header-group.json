@@ -14,7 +14,7 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "settings": {
-        "message": "Free shipping over $115 · WELCOME10 for 10% off your first order · EMPORX15 for 15% off $115+",
+        "message": "Free shipping over $75 · WELCOME10 for 10% off your first order · EMPORX20 for 20% off $115+",
         "show_links": true
       }
     },
