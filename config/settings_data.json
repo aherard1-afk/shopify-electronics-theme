@@ -22,10 +22,24 @@
     "show_quick_view": true,
     "cart_type": "drawer",
     "cart_reassurance": "<p>Secure checkout. Encrypted payment. Easy returns.</p>",
+    "social_tiktok": "https://www.tiktok.com/@emporx45",
     "support_email": "Alvaro.herard@emporx.com",
     "support_phone": "",
     "support_hours": "Mon–Fri, 9am–6pm",
-    "social_tiktok": "https://www.tiktok.com/@emporx45"
+    "sections": {
+      "cart-drawer": {
+        "type": "cart-drawer",
+        "settings": {}
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "14060646107696862457": {
+        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
+      }
+    }
   },
   "presets": {
     "Emporx Electronics": {
