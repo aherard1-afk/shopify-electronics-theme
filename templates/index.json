@@ -267,52 +267,6 @@
         "heading": "Why shop with us"
       }
     },
-    "reviews": {
-      "type": "testimonials",
-      "blocks": {
-        "r1": {
-          "type": "review",
-          "settings": {
-            "stars": 5,
-            "quote": "Smooth ordering, arrived quickly, and support actually helped me pick the right model.",
-            "name": "Sample Customer",
-            "location": "",
-            "verified": false
-          }
-        },
-        "r2": {
-          "type": "review",
-          "settings": {
-            "stars": 5,
-            "quote": "Great selection and honest advice. Felt like buying from people who know electronics.",
-            "name": "Sample Customer",
-            "location": "",
-            "verified": false
-          }
-        },
-        "r3": {
-          "type": "review",
-          "settings": {
-            "stars": 4,
-            "quote": "Fair prices and the warranty info was clear up front. Will shop again.",
-            "name": "Sample Customer",
-            "location": "",
-            "verified": false
-          }
-        }
-      },
-      "block_order": [
-        "r1",
-        "r2",
-        "r3"
-      ],
-      "settings": {
-        "eyebrow": "Customer experiences",
-        "heading": "What our customers say",
-        "subheading": "Real feedback from people who shop with us.",
-        "placeholder_notice": true
-      }
-    },
     "stats": {
       "type": "stats-band",
       "blocks": {
@@ -358,7 +312,7 @@
       "settings": {
         "eyebrow": "Stay informed",
         "heading": "Get restock alerts and exclusive tech offers.",
-        "text": "Useful, occasional emails — no spam. Unsubscribe anytime."
+        "text": "Join for restock alerts and exclusive tech offers. Use WELCOME10 for 10% off — free shipping over $75."
       }
     },
     "faq": {
@@ -379,7 +333,6 @@
     "editorial",
     "paths",
     "values",
-    "reviews",
     "stats",
     "newsletter",
     "faq"
