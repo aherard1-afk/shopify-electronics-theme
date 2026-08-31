@@ -178,7 +178,7 @@
         muts.forEach(function (m) {
           Array.prototype.forEach.call(m.addedNodes, function (n) {
             if (n.nodeType !== 1) return;
-            if (n.classList && n.classList.contains("reveal")) io.observe(n);
+            if (n.classList && n.classList.contains("reveal")) n.classList.add("is-in");
             if (n.querySelectorAll) $(".reveal", n).forEach(function (el) { io.observe(el); });
           });
         });
