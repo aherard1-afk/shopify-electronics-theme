@@ -167,10 +167,10 @@
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); } });
     }, { threshold: 0.12 });
-    $(".reveal").forEach(function (el) { io.observe(el); });
+    $(".reveal").forEach(function (el) { el.classList.add("is-in"); });
     window.__nwReveal = function (root) {
       $(".reveal", root || document).forEach(function (el) {
-        if (!el.classList.contains("is-in")) io.observe(el);
+        if (!el.classList.contains("is-in")) el.classList.add("is-in");
       });
     };
     try {
@@ -179,7 +179,7 @@
           Array.prototype.forEach.call(m.addedNodes, function (n) {
             if (n.nodeType !== 1) return;
             if (n.classList && n.classList.contains("reveal")) n.classList.add("is-in");
-            if (n.querySelectorAll) $(".reveal", n).forEach(function (el) { io.observe(el); });
+            if (n.querySelectorAll) $(".reveal", n).forEach(function (el) { el.classList.add("is-in"); });
           });
         });
       }).observe(document.body, { childList: true, subtree: true });
