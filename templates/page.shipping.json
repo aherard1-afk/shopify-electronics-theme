@@ -1,7 +1,33 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "header": { "type": "page-header", "settings": { "eyebrow": "Customer care", "heading": "Shipping Policy", "intro": "How and when your order gets to you.", "align": "left" } },
-    "body": { "type": "rich-text", "settings": { "content": "<h3>Free shipping</h3><p><strong>Enjoy free Standard shipping on all orders over $125.</strong> The discount is applied automatically at checkout — no code needed.</p><h3>Shipping options &amp; rates</h3><p>Pick the speed that suits you at checkout. Your exact shipping rate is calculated there based on your destination and the option you choose — so you'll always see the final cost before you pay, with no surprises. Rates may vary by location and delivery speed. Estimated delivery windows include order processing.</p><ul><li><strong>Economy</strong> · estimated 7–14 business days</li><li><strong>Standard</strong> · estimated 5–14 business days — <strong>free on orders over $125</strong></li><li><strong>Express</strong> · estimated 3–7 business days</li></ul><p>Close to $125? It's worth adding that one more item — <strong>Standard shipping is on us once your order passes $125.</strong></p><h3>Order processing &amp; tracking</h3><p>Most orders are prepared and dispatched within 1–3 business days. You'll receive an order confirmation when you check out, and a tracking link by email once your order ships. You can also follow your order from your <a href=\"/account\">account</a>.</p><h3>Important notes</h3><p>Delivery estimates are not guaranteed and may be affected by carrier delays, customs, weather, or high-volume periods. If your order hasn't arrived within the estimated window, contact us and we'll help track it down. <strong>If we are unable to ship your order within the estimated time frame, we'll notify you, and you may choose to wait or cancel your order for a full refund.</strong></p><h3>Questions?</h3><p>Reach our team any time at <a href=\"mailto:Alvaro.herard@emporx.com\">Alvaro.herard@emporx.com</a> or through our <a href=\"/pages/contact\">Contact page</a>.</p>", "width": 820 } }
+    "header": {
+      "type": "page-header",
+      "settings": {
+        "eyebrow": "Customer care",
+        "heading": "Shipping Policy",
+        "intro": "Delivery times, rates and how your order reaches you.",
+        "align": "left"
+      }
+    },
+    "body": {
+      "type": "rich-text",
+      "settings": {
+        "content": "<h2>Free shipping</h2>\n<p>Standard shipping is <strong>free on all orders over $75</strong>. It's applied automatically at checkout — no code needed.</p>\n\n<h2>Shipping options &amp; delivery times</h2>\n<p>Choose your speed at checkout. Your exact rate is calculated there based on destination and the option you pick, so you always see the final cost before you pay. Estimated windows <em>include</em> our 1–3 business day processing time.</p>\n<ul>\n<li><strong>Economy — Free.</strong> Estimated 12–20 business days.</li>\n<li><strong>Standard — $6.99.</strong> Estimated 10–14 business days. <strong>Free on orders over $75.</strong></li>\n<li><strong>Express — $14.99.</strong> Estimated 7–10 business days.</li>\n<li><strong>Priority — $24.99.</strong> Estimated 5–8 business days.</li>\n</ul>\n<p>Close to $75? Adding one more item is usually worth it — Standard shipping is on us once your order passes $75.</p>\n\n<h2>Where your order ships from</h2>\n<p>We work with vetted overseas fulfilment partners, and most orders ship from our partner warehouses in Asia. That's how we keep prices low on the tech we carry. It also means delivery takes longer than a domestic-only retailer — the windows above are realistic, not optimistic, and they already account for international transit and customs clearance.</p>\n\n<h2>Order processing &amp; tracking</h2>\n<p>Orders are prepared and dispatched within <strong>1–3 business days</strong>. You'll get an order confirmation at checkout and a tracking link by email once your order ships. Tracking can take 2–5 business days to show its first scan after dispatch — this is normal and doesn't mean anything is wrong.</p>\n\n<h2>Multiple items</h2>\n<p>Orders with several items may arrive in separate parcels, sometimes a few days apart, at no extra cost to you. Each parcel gets its own tracking.</p>\n\n<h2>Customs, duties &amp; taxes</h2>\n<p>For orders delivered within the United States, no additional customs fees apply. If you're ordering from outside the US, your local customs authority may charge import duties or taxes. Those charges are set by your country and are the recipient's responsibility.</p>\n\n<h2>Incorrect addresses</h2>\n<p>Please double-check your shipping address at checkout. If an order is returned to us because of an incomplete or incorrect address, we'll contact you to arrange redelivery — reshipping costs may apply.</p>\n\n<h2>Delays</h2>\n<p>Occasionally carrier backlogs, customs inspections, weather or peak seasons push a delivery past its estimated window. If your order passes its estimate, email us at <a href=\"mailto:Alvaro.herard@emporx.com\">Alvaro.herard@emporx.com</a> and we'll chase the carrier and keep you updated.</p>\n<p>If we can't ship your order within 30 days of purchase, you're entitled to cancel for a full refund. We'll always contact you first if a significant delay is expected.</p>\n\n<h2>Lost or damaged parcels</h2>\n<p>If your parcel arrives damaged, or tracking shows no movement for 14 consecutive days, contact us. We'll investigate with the carrier and arrange a replacement or refund. See our <a href=\"/pages/returns-refunds\">Returns &amp; Refunds</a> policy for full details.</p>\n\n<h2>Questions</h2>\n<p>Email <a href=\"mailto:Alvaro.herard@emporx.com\">Alvaro.herard@emporx.com</a> — we're happy to help before or after you order.</p>",
+        "width": 820
+      }
+    }
   },
-  "order": ["header", "body"]
+  "order": [
+    "header",
+    "body"
+  ]
 }

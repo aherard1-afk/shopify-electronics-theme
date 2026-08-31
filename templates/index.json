@@ -310,8 +310,8 @@
     "newsletter": {
       "type": "newsletter",
       "settings": {
-        "eyebrow": "Stay informed",
-        "heading": "Get restock alerts and exclusive tech offers.",
+        "eyebrow": "Save on your first order",
+        "heading": "Get 10% off your first order.",
         "text": "Join for restock alerts and exclusive tech offers. Use WELCOME10 for 10% off — free shipping over $75."
       }
     },
