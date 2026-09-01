@@ -402,7 +402,6 @@
 .toast[data-open="true"] { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
 @media (max-width: 1000px) { .toast { bottom: 78px; } }
 
-/* injected-carousel-reveal-fix */
-[data-carousel-track] .reveal,
-[data-recently-viewed] .reveal,
-[data-related-target] .reveal { opacity: 1 !important; transform: none !important; }
+
+/* reveal-always-visible */
+.reveal { opacity: 1 !important; transform: none !important; }
