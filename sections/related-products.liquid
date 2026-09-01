@@ -41,7 +41,7 @@
   if(window.__nwArrowsBound) return;
   window.__nwArrowsBound=true;
   function stepFor(track){var card=track.firstElementChild;if(!card)return Math.max(240,track.clientWidth*0.8);var cs=getComputedStyle(track);var gap=parseFloat(cs.columnGap||cs.gap||0)||0;return card.offsetWidth+gap;}
-  document.addEventListener('click',function(e){var btn=e.target.closest('[data-carousel-prev],[data-carousel-next]');if(!btn)return;var car=btn.closest('[data-carousel]');if(!car)return;var track=car.querySelector('[data-carousel-track]');if(!track||track.scrollWidth<=track.clientWidth+4)return;var dir=btn.hasAttribute('data-carousel-next')?1:-1;track.scrollLeft += dir*stepFor(track);});
+  document.addEventListener('click',function(e){var btn=e.target.closest('[data-carousel-prev],[data-carousel-next]');if(!btn)return;var car=btn.closest('[data-carousel]');if(!car)return;var track=car.querySelector('[data-carousel-track]');if(!track||track.scrollWidth<=track.clientWidth+4)return;var dir=btn.hasAttribute('data-carousel-next')?1:-1;var target=track.scrollLeft+dir*stepFor(track);track.style.scrollBehavior='smooth';track.scrollLeft=Math.max(0,Math.min(target,track.scrollWidth-track.clientWidth));});
 })();
 </script>
 {% schema %}
