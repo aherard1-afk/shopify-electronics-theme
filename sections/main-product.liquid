@@ -89,7 +89,7 @@
         {%- assign content = block.settings.content -%}
         {%- if block.settings.use_metafield and block.settings.metafield_ns != blank and block.settings.metafield_key != blank -%}
           {%- assign mf = product.metafields[block.settings.metafield_ns][block.settings.metafield_key] -%}
-          {%- if mf != blank -%}{%- assign content = mf | metafield_tag -%}{%- endif -%}
+          {%- if mf != blank -%}{%- assign content = mf.value -%}{%- endif -%}
         {%- endif -%}
         {%- if content != blank -%}
           <div class="accordion__item" {{ block.shopify_attributes }}><h3><button class="accordion__btn" data-accordion-btn aria-expanded="false" aria-controls="tab-{{ block.id }}">{{ block.settings.title }} {% render 'icon', name: 'chevron-down', size: 18 %}</button></h3><div class="accordion__panel" id="tab-{{ block.id }}" data-open="false"><div><div class="rte" style="padding:0 20px 20px">{{ content }}</div></div></div></div>
