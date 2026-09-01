@@ -34,6 +34,7 @@
           <span>{% render 'icon', name: 'truck', size: 15 %} Fast shipping</span>
           <span>{% render 'icon', name: 'rotate', size: 15 %} Easy returns</span>
         </div>
+        {% render 'free-shipping-bar' %}
         <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
           <span style="font-weight:650">{{ 'cart.general.subtotal' | t }}</span>
           <span style="font-weight:700;font-size:1.15rem">{{ cart.total_price | money }}</span>

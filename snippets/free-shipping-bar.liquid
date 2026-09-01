@@ -1,0 +1,31 @@
+{%- comment -%}
+  Free-shipping progress. Rendered in the cart drawer and on the cart page.
+  Threshold lives here so there is one place to change it.
+{%- endcomment -%}
+{%- assign fs_threshold = 7500 -%}
+{%- if cart.item_count > 0 -%}
+  {%- assign fs_remaining = fs_threshold | minus: cart.total_price -%}
+  {%- if fs_remaining > 0 -%}
+    {%- assign fs_pct = cart.total_price | times: 100 | divided_by: fs_threshold -%}
+    <div class="fsbar" data-free-shipping>
+      <p class="fsbar__msg">
+        {% render 'icon', name: 'truck', size: 15 %}
+        <span>You're <strong>{{ fs_remaining | money }}</strong> away from free shipping</span>
+      </p>
+      <div class="fsbar__track" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+           aria-valuenow="{{ fs_pct }}" aria-label="Progress toward free shipping">
+        <div class="fsbar__fill" style="width:{{ fs_pct }}%"></div>
+      </div>
+      <a class="fsbar__link" href="{{ routes.all_products_collection_url }}?sort_by=price-ascending">
+        Add a small accessory to qualify
+      </a>
+    </div>
+  {%- else -%}
+    <div class="fsbar fsbar--won" data-free-shipping>
+      <p class="fsbar__msg">
+        {% render 'icon', name: 'check', size: 15 %}
+        <span><strong>Free shipping unlocked.</strong> Nice one.</span>
+      </p>
+    </div>
+  {%- endif -%}
+{%- endif -%}

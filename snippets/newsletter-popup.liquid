@@ -1,0 +1,103 @@
+{%- comment -%}
+  Email capture popup. Fires on whichever comes first: 8s dwell or exit intent.
+  Suppressed permanently once dismissed or subscribed. Never shown on cart or
+  checkout, where it would interrupt a purchase in progress.
+{%- endcomment -%}
+<div class="nlpop" data-nlpop hidden>
+  <div class="nlpop__scrim" data-nlpop-close></div>
+  <div class="nlpop__box" role="dialog" aria-modal="true" aria-labelledby="nlpop-h" aria-describedby="nlpop-d">
+    <button type="button" class="nlpop__x" data-nlpop-close aria-label="Close">
+      {% render 'icon', name: 'close', size: 18 %}
+    </button>
+
+    <div data-nlpop-form>
+      <span class="nlpop__kicker">First order</span>
+      <h2 class="nlpop__h" id="nlpop-h">Take 10% off</h2>
+      <p class="nlpop__d" id="nlpop-d">
+        Join the list for restock alerts and deals on the tech we actually stock.
+        We'll send your code straight away.
+      </p>
+
+      {%- form 'customer', id: 'nlpop-form', class: 'nlpop__form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter,popup">
+        <input type="hidden" name="contact[accepts_marketing]" value="true">
+        <label class="visually-hidden" for="nlpop-email">Email address</label>
+        <input id="nlpop-email" type="email" name="contact[email]" required
+               placeholder="you@email.com" autocomplete="email" class="nlpop__input">
+        <button type="submit" class="btn btn--accent btn--lg btn--block">Send my code</button>
+
+        {%- if form.errors -%}
+          <p class="nlpop__err">{{ form.errors.messages.email | default: 'That email did not work. Try another.' }}</p>
+        {%- endif -%}
+      {%- endform -%}
+
+      <button type="button" class="nlpop__no" data-nlpop-close>No thanks</button>
+    </div>
+
+    <div data-nlpop-done hidden>
+      <div class="nlpop__tick">{% render 'icon', name: 'check', size: 26 %}</div>
+      <h2 class="nlpop__h">You're in</h2>
+      <p class="nlpop__d">Use this at checkout for 10% off your first order.</p>
+      <p class="nlpop__code"><code>WELCOME10</code></p>
+      <button type="button" class="btn btn--accent btn--block" data-nlpop-close>Start shopping</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var KEY = "nw-nl";
+  var root = document.querySelector("[data-nlpop]");
+  if (!root) return;
+
+  /* Never interrupt an in-progress purchase. */
+  if (/\/(cart|checkouts?)(\/|$)/.test(window.location.pathname)) return;
+
+  function seen() { try { return localStorage.getItem(KEY); } catch (e) { return "1"; } }
+  function remember(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+
+  var params = new URLSearchParams(window.location.search);
+  var justSubscribed = params.get("customer_posted") === "true";
+
+  if (justSubscribed) {
+    remember("subscribed");
+    root.hidden = false;
+    document.querySelector("[data-nlpop-form]").hidden = true;
+    document.querySelector("[data-nlpop-done]").hidden = false;
+    requestAnimationFrame(function () { root.classList.add("is-open"); });
+    return;
+  }
+
+  if (seen()) return;
+
+  var opened = false;
+  function open() {
+    if (opened) return;
+    opened = true;
+    root.hidden = false;
+    requestAnimationFrame(function () { root.classList.add("is-open"); });
+    var f = root.querySelector(".nlpop__input");
+    if (f && window.innerWidth > 700) { try { f.focus({ preventScroll: true }); } catch (e) {} }
+    document.removeEventListener("mouseout", onExit);
+  }
+  function close() {
+    root.classList.remove("is-open");
+    remember("dismissed");
+    setTimeout(function () { root.hidden = true; }, 220);
+  }
+
+  function onExit(e) {
+    if (e.clientY <= 0 && !e.relatedTarget) open();
+  }
+
+  var timer = setTimeout(open, 8000);
+  document.addEventListener("mouseout", onExit);
+
+  root.addEventListener("click", function (e) {
+    if (e.target.closest("[data-nlpop-close]")) { clearTimeout(timer); close(); }
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !root.hidden) { clearTimeout(timer); close(); }
+  });
+})();
+</script>
