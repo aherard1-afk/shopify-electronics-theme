@@ -16,10 +16,10 @@
           "type": "tab",
           "settings": {
             "title": "Specifications",
-            "content": "<p>Add product specifications here, or connect them to a product metafield (toggle \"Pull from a metafield\" in this block).</p>",
-            "use_metafield": false,
-            "metafield_ns": "",
-            "metafield_key": ""
+            "content": "",
+            "use_metafield": true,
+            "metafield_ns": "custom",
+            "metafield_key": "specifications"
           }
         },
         "shipping": {
