@@ -154,7 +154,14 @@
     $$("[data-carousel]").forEach(function (car) {
       var track = $("[data-carousel-track]", car);
       if (!track) return;
-      var step = function () { return Math.max(240, track.clientWidth * 0.8); };
+      var step = function () {
+        var card = track.firstElementChild;
+        if (card) {
+          var gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || 0) || 0;
+          return card.offsetWidth + gap;
+        }
+        return Math.max(240, track.clientWidth * 0.8);
+      };
       var prev = $("[data-carousel-prev]", car), next = $("[data-carousel-next]", car);
       if (prev) prev.addEventListener("click", function () { track.scrollBy({ left: -step(), behavior: "smooth" }); });
       if (next) next.addEventListener("click", function () { track.scrollBy({ left: step(), behavior: "smooth" }); });
